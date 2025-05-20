@@ -19,7 +19,6 @@ export const Navbar = ()=>{
 
         }).catch(error => console.log(error));
     }
-    console.log(user)
     return(
         <>
           <div className="navbar bg-base-100  shadow-sm">

@@ -1,7 +1,55 @@
+import { useLoaderData } from "react-router"
+
+
 export const MyGroups = ()=>{
+  const groupData = useLoaderData();
     return(
         <>
-          <h1>This is MyGroups</h1>
+          <div className="overflow-x-auto">
+            <table className="table">
+              {/* head */}
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Group Name</th>
+                  <th>Category</th>
+                  <th>Update</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  groupData.map((signleData)=>{
+                    return <tr>
+                              <td>
+                                <div className="flex items-center gap-3">
+                                  <div className="avatar">
+                                    <div className="mask mask-squircle h-12 w-12">
+                                      <img
+                                        src={signleData.photo}
+                                        alt="Avatar Tailwind CSS Component" />
+                                    </div>
+                                  </div>
+                                  <div>
+                                    <div className="font-bold">{signleData.userName}</div>
+                                    <div className="text-sm opacity-50">{signleData.location}</div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>{signleData.groupName}</td>
+                              <td>{signleData.hobbyCategory}</td>
+                              <td>
+                                <button className="btn">Update</button>
+                              </td>
+                              <td>
+                                <button className="btn">Delete</button>
+                              </td>
+                            </tr>
+                  })
+                }
+              </tbody>
+            </table>
+          </div>
         </>
     )
 }
