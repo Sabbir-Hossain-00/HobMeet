@@ -1,8 +1,26 @@
+import { useState } from "react";
 import { useLoaderData } from "react-router"
 
 
 export const MyGroups = ()=>{
-  const groupData = useLoaderData();
+  const initialgroupData = useLoaderData();
+  const [groupData , setGroupData] = useState(initialgroupData)
+
+
+
+
+  const handleDeleteGroup = (id)=>{
+    fetch(`http://localhost:3000/group/${id}`, {
+      method: "DELETE"
+    }).then(res => res.json()).then((data)=>{
+      if(data.deletedCount){
+        const remainingGroup = groupData.filter((group)=> group._id !== id)
+        setGroupData(remainingGroup)
+      }
+    })
+  }
+
+
     return(
         <>
           <div className="overflow-x-auto">
@@ -20,7 +38,7 @@ export const MyGroups = ()=>{
               <tbody>
                 {
                   groupData.map((signleData)=>{
-                    return <tr>
+                    return <tr key={signleData._id}>
                               <td>
                                 <div className="flex items-center gap-3">
                                   <div className="avatar">
@@ -42,7 +60,7 @@ export const MyGroups = ()=>{
                                 <button className="btn">Update</button>
                               </td>
                               <td>
-                                <button className="btn">Delete</button>
+                                <button onClick={()=>handleDeleteGroup(signleData._id)} className="btn">Delete</button>
                               </td>
                             </tr>
                   })
