@@ -1,5 +1,5 @@
 import { use } from "react"
-import { Link, NavLink } from "react-router"
+import { Link, NavLink, useActionData } from "react-router"
 import { AuthContext } from "../../context/AuthContext"
 
 export const Navbar = ()=>{
@@ -8,13 +8,18 @@ export const Navbar = ()=>{
     const links = 
     <>
        <li><NavLink to='/' className={({isActive})=> isActive ? "underline" : ""}>Home</NavLink></li>
-       <li><NavLink to='/' className={({isActive})=> isActive ? "underline" : ""}>Home</NavLink></li>
+       <li><NavLink to='/allGroups' className={({isActive})=> isActive ? "underline" : ""}>All Groups</NavLink></li>
+       <li><NavLink to='/createGroups' className={({isActive})=> isActive ? "underline" : ""}>Create Groups</NavLink></li>
+       {
+        user && <li><NavLink to='/myGroups' className={({isActive})=> isActive ? "underline" : ""}>My Groups</NavLink></li>
+       }
     </>
     const handleLogout = ()=>{
         logOut().then((result)=>{
 
         }).catch(error => console.log(error));
     }
+    console.log(user)
     return(
         <>
           <div className="navbar bg-base-100  shadow-sm">
@@ -39,7 +44,9 @@ export const Navbar = ()=>{
               <div className="navbar-end">
                 {
                     user ? <>
-                    <img className="w-8 rounded-full mr-3" src={user.photoURL? user.photoURL : "https://i.ibb.co.com/0jKWX0cD/user-png-33832.png"} alt="" />
+                    <div className="tooltip tooltip-left" data-tip={`${user.displayName}`}>
+                      <img className=" w-8 rounded-full mr-3" src={user.photoURL? user.photoURL : "https://i.ibb.co.com/0jKWX0cD/user-png-33832.png"} alt="" />
+                    </div>
                     <Link onClick={handleLogout} className="btn">Logout</Link>
                     </> : <Link to="/login" className="btn">Login</Link>
                 }

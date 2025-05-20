@@ -1,28 +1,33 @@
 import { use } from "react";
-import { Link } from "react-router"
+import { Link, useLocation, useNavigate } from "react-router"
 import { AuthContext } from "../../context/AuthContext";
 
 export const Register = ()=>{
 
-    const {createUser} = use(AuthContext);
+    const {createUser , updateUser } = use(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const handleRegister = (e)=>{
+
         e.preventDefault();
         const form = e.target ;
         const formData = new FormData(form);
-        const {email , password , ...rest} = Object.fromEntries(formData.entries());
-
-        const userData = {
-            ...rest,
-            email,
-        }
+        const {email , name , photo , password} = Object.fromEntries(formData.entries());
 
         createUser(email , password).then((result)=>{
-            
+            updateUser({displayName : name , photoURL : photo}).then((result)=>{
+
+                 navigate(`${location.state || "/"}`);
+
+            }).catch(erroe => console.log(erroe))
         }).catch(error => console.log(error))
         
 
     }
+
+    
+
     return(
         <>
           <div className="card bg-base-100 mx-auto mt-20 w-full max-w-sm shrink-0 shadow-2xl">
@@ -46,6 +51,8 @@ export const Register = ()=>{
                     <button className="btn btn-neutral mt-4">Register</button>
                 </form>
                 <p>Already Have An Account ? <Link className="text-blue-950 font-medium" to="/login">Login</Link> </p>
+
+                
             </div>
           </div>
         </>
