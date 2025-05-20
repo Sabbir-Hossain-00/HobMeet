@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useLoaderData } from "react-router"
+import { useLoaderData, useNavigate } from "react-router"
 
 
 export const MyGroups = ()=>{
   const initialgroupData = useLoaderData();
   const [groupData , setGroupData] = useState(initialgroupData)
+  const navigate = useNavigate();
 
 
 
@@ -57,7 +58,7 @@ export const MyGroups = ()=>{
                               <td>{signleData.groupName}</td>
                               <td>{signleData.hobbyCategory}</td>
                               <td>
-                                <button className="btn">Update</button>
+                                <button onClick={()=>navigate(`/updategroup/${signleData._id}`)} className="btn">Update</button>
                               </td>
                               <td>
                                 <button onClick={()=>handleDeleteGroup(signleData._id)} className="btn">Delete</button>
