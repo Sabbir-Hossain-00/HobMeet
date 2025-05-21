@@ -1,14 +1,20 @@
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router"
+import { AuthContext } from "../../context/AuthContext";
 
 
 export const MyGroups = ()=>{
+  const {user} = use(AuthContext)
   const initialgroupData = useLoaderData();
-  const [groupData , setGroupData] = useState(initialgroupData)
+  const [groupData , setGroupData] = useState([]);
   const navigate = useNavigate();
 
+  useEffect(()=>{
 
+    const myGroupData = initialgroupData.filter((singleGroup)=> singleGroup.email === user.email);
+    setGroupData(myGroupData)
 
+  },[ initialgroupData , user])
 
   const handleDeleteGroup = (id)=>{
     fetch(`http://localhost:3000/group/${id}`, {
@@ -23,8 +29,8 @@ export const MyGroups = ()=>{
 
 
     return(
-        <section className="container mx-auto px-3 md:px-6 lg:px-8 xl:px-14">
-          <div className="mt-20">
+        <section className=" container mx-auto px-3 md:px-6 lg:px-8 xl:px-14">
+          <div className="py-20">
             <table className="table">
               {/* head */}
               <thead>
@@ -38,7 +44,7 @@ export const MyGroups = ()=>{
               </thead>
               <tbody>
                 {
-                  groupData.map((signleData)=>{
+                  groupData?.map((signleData)=>{
                     return <tr className="border border-gray-100 text-center" key={signleData._id}>
                               <td className="border border-gray-100">
                                 <div className="flex items-center justify-center gap-3">

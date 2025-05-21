@@ -8,7 +8,7 @@ export const GroupCard = ({singleGroupData})=>{
               <img
                 src={singleGroupData.photo} // Replace with your actual image path
                 alt="Repair Cafe"
-                className="w-full h-40 object-cover"
+                className="w-full h-40 xl:h-60 object-cover"
               />
               <div className="absolute top-2 left-2 text-white">
                 <h2 className="text-lg font-semibold">{singleGroupData.groupName}</h2>

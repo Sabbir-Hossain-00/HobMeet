@@ -5,7 +5,7 @@ export const AllGroups = ()=>{
   const groupData = useLoaderData();
     return(
         <>
-          <div className="container mx-auto px-3 md:px-6 lg:px-8 xl:px-14 text-center grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 space-x-2">
+          <div className="py-10 container mx-auto px-3 md:px-6 lg:px-8 xl:px-14 text-center grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 space-x-2">
             {
               groupData.map((singleGroupData)=>{
                 return <GroupCard key={singleGroupData._id} singleGroupData={singleGroupData}/>

@@ -4,7 +4,7 @@ export const FeaturedGroupCard = ({group})=>{
     return(
         <>
           <div className="card bg-base-100 shadow-sm">
-             <figure className="h-1/2">
+             <figure className="h-[150px] xl:h-[250px]">
                <img
                  src={group.photo}
                  alt="Shoes" 
@@ -12,7 +12,7 @@ export const FeaturedGroupCard = ({group})=>{
              </figure>
              <div className="card-body">
                <h2 className="card-title">{group.groupName}</h2>
-               <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+               <p className="">A card component has a figure, a body part, and inside body there are title and actions parts</p>
                <div className="card-actions ">
                  <Link to={`/group/${group._id}`} className="btn btn-primary">Details</Link>
                </div>
