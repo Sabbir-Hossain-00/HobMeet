@@ -1,6 +1,7 @@
 import { use } from "react"
 import { Link, NavLink, useActionData } from "react-router"
 import { AuthContext } from "../../context/AuthContext"
+import { Tooltip } from 'react-tooltip'
 
 export const Navbar = ()=>{
     const {user , logOut} = use(AuthContext);
@@ -44,9 +45,8 @@ export const Navbar = ()=>{
               <div className="navbar-end">
                 {
                     user ? <>
-                    <div className="tooltip tooltip-left" data-tip={`${user.displayName}`}>
-                      <img className=" w-8 rounded-full mr-3" src={user.photoURL? user.photoURL : "https://i.ibb.co.com/0jKWX0cD/user-png-33832.png"} alt="" />
-                    </div>
+                      <img data-tooltip-id="my-tooltip" data-tooltip-content={user.displayName} className=" w-8 rounded-full mr-3" src={user.photoURL? user.photoURL : "https://i.ibb.co.com/0jKWX0cD/user-png-33832.png"} alt="" />
+                     <Tooltip className="z-10" id="my-tooltip"/>
                     <Link onClick={handleLogout} className="btn">Logout</Link>
                     </> : <Link to="/login" className="btn">Login</Link>
                 }

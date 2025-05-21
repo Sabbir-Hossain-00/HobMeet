@@ -30,7 +30,7 @@ const slides = [
 
 export const Banner = () => {
   return (
-    <div className="container mx-auto px-3 md:px-6 lg:px-8 xl:px-14 w-full">
+    <div className="z-0 container mx-auto px-3 md:px-6 lg:px-8 xl:px-14 w-full">
       <Swiper
         modules={[Autoplay, Pagination, Navigation]}
         loop={true}

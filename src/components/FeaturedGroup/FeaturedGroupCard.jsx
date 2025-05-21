@@ -1,8 +1,10 @@
+import { Bounce, Fade, Flip, Hinge, JackInTheBox, Rotate, Slide, Zoom } from "react-awesome-reveal"
 import { Link } from "react-router"
 
 export const FeaturedGroupCard = ({group})=>{
     return(
         <>
+        <Zoom>
           <div className="card bg-base-100 shadow-sm">
              <figure className="h-[150px] xl:h-[250px]">
                <img
@@ -18,6 +20,8 @@ export const FeaturedGroupCard = ({group})=>{
                </div>
              </div>
          </div>
+        </Zoom>
+          
         </>
     )
 }

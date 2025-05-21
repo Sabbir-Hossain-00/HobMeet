@@ -1,20 +1,24 @@
 import { use, useEffect, useState } from "react";
-import { useLoaderData, useNavigate } from "react-router"
+import { useNavigate } from "react-router"
 import { AuthContext } from "../../context/AuthContext";
 
 
 export const MyGroups = ()=>{
   const {user} = use(AuthContext)
-  const initialgroupData = useLoaderData();
   const [groupData , setGroupData] = useState([]);
   const navigate = useNavigate();
 
+  const fetchData = async()=>{
+    const res = await fetch(`http://localhost:3000/mygroups/${user.email}`);
+    const data = await res.json();
+    setGroupData(data)
+  }
+
   useEffect(()=>{
+    fetchData()
+  },[])
 
-    const myGroupData = initialgroupData.filter((singleGroup)=> singleGroup.email === user.email);
-    setGroupData(myGroupData)
-
-  },[ initialgroupData , user])
+ 
 
   const handleDeleteGroup = (id)=>{
     fetch(`http://localhost:3000/group/${id}`, {

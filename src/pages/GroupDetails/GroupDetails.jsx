@@ -1,8 +1,24 @@
 import { useLoaderData } from "react-router"
+import swal from 'sweetalert';
+
 
 export const GroupDetails = ()=>{
     const groupDetails = useLoaderData();
-    console.log(groupDetails)
+    const handleJoinGroup = ()=>{
+      console.log(groupDetails.date)
+      const date = new Date();
+      const todayDate = date.toISOString().split('T')[0];
+      console.log(todayDate);
+      if(groupDetails.date === todayDate){
+        swal({
+            title: "Good job!",
+            text: "You Joined the group properly",
+            icon: "success",
+          });
+      }else{
+        swal("Oops!", "The group is no longer active!", "error");
+      }
+    }
     return(
         <section className=" py-10">
           <div className=" card mx-auto mt-10 bg-base-100 w-96 shadow-sm">
@@ -16,7 +32,7 @@ export const GroupDetails = ()=>{
               <h2 className="card-title">{groupDetails.groupName}</h2>
               <p>{groupDetails.userName}</p>
               <div className="card-actions">
-                <button className="btn btn-primary">Join Now</button>
+                <button onClick={handleJoinGroup} className="btn btn-primary">Join Now</button>
               </div>
             </div>
           </div>
