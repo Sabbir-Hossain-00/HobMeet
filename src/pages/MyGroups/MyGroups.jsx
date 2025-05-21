@@ -23,25 +23,25 @@ export const MyGroups = ()=>{
 
 
     return(
-        <>
-          <div className="overflow-x-auto">
+        <section className="container mx-auto px-3 md:px-6 lg:px-8 xl:px-14">
+          <div className="mt-20">
             <table className="table">
               {/* head */}
               <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Group Name</th>
-                  <th>Category</th>
-                  <th>Update</th>
-                  <th>Delete</th>
+                <tr className="border border-gray-100 text-center">
+                  <th className="border border-gray-100">Name</th>
+                  <th className="border border-gray-100">Group Name</th>
+                  <th className="border border-gray-100">Category</th>
+                  <th className="border border-gray-100">Update</th>
+                  <th className="border border-gray-100">Delete</th>
                 </tr>
               </thead>
               <tbody>
                 {
                   groupData.map((signleData)=>{
-                    return <tr key={signleData._id}>
-                              <td>
-                                <div className="flex items-center gap-3">
+                    return <tr className="border border-gray-100 text-center" key={signleData._id}>
+                              <td className="border border-gray-100">
+                                <div className="flex items-center justify-center gap-3">
                                   <div className="avatar">
                                     <div className="mask mask-squircle h-12 w-12">
                                       <img
@@ -55,12 +55,12 @@ export const MyGroups = ()=>{
                                   </div>
                                 </div>
                               </td>
-                              <td>{signleData.groupName}</td>
-                              <td>{signleData.hobbyCategory}</td>
-                              <td>
+                              <td className="border border-gray-100">{signleData.groupName}</td>
+                              <td className="border border-gray-100">{signleData.hobbyCategory}</td>
+                              <td className="border border-gray-100">
                                 <button onClick={()=>navigate(`/updategroup/${signleData._id}`)} className="btn">Update</button>
                               </td>
-                              <td>
+                              <td className="border border-gray-100">
                                 <button onClick={()=>handleDeleteGroup(signleData._id)} className="btn">Delete</button>
                               </td>
                             </tr>
@@ -69,6 +69,6 @@ export const MyGroups = ()=>{
               </tbody>
             </table>
           </div>
-        </>
+        </section>
     )
 }

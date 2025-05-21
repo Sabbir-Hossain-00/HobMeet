@@ -1,14 +1,14 @@
-import { Link, useLoaderData } from "react-router";
+import { useLoaderData } from "react-router";
+import { GroupCard } from "../../components/GroupCards/GroupCard";
 
 export const AllGroups = ()=>{
   const groupData = useLoaderData();
-  console.log(groupData)
     return(
         <>
-          <div className=" text-center mt-20 space-x-2">
+          <div className="container mx-auto px-3 md:px-6 lg:px-8 xl:px-14 text-center grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 space-x-2">
             {
               groupData.map((singleGroupData)=>{
-                return <Link to={`/group/${singleGroupData._id}`} className="btn">{singleGroupData.groupName}</Link>
+                return <GroupCard key={singleGroupData._id} singleGroupData={singleGroupData}/>
               })
             }
           </div>

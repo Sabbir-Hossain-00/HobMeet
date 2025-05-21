@@ -23,8 +23,8 @@ export const UpdateGroup = ()=>{
     return(
         <>
              <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-200 via-blue-100 to-blue-200 p-4">
-                <form onSubmit={handleUpdateGroup} className="bg-white bg-opacity-30 backdrop-blur-md p-8 rounded-xl w-full max-w-xl shadow-xl">
-                  <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">Create a Group</h2>
+                <form onSubmit={handleUpdateGroup} className="bg-white/10 bg-opacity-30 backdrop-blur-md p-8 rounded-xl w-full max-w-xl shadow-xl">
+                  <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">Update your Group</h2>
         
                   <label className="block mb-2 font-medium text-gray-700">Group Name:<span className="text-red-500">*</span></label>
                   <input type="text" name="groupName" defaultValue={groupData.groupName} className="w-full p-2 mb-4 border rounded" required />
@@ -71,17 +71,6 @@ export const UpdateGroup = ()=>{
         
                   <label className="block mb-2 font-medium text-gray-700">Description:<span className="text-red-500">*</span></label>
                   <input type="text" name="description" defaultValue={groupData.description} className="w-full p-2 mb-4 border rounded" required />
-        
-                  <div className="mb-6">
-                    <label className="block mb-2 font-medium text-gray-700">Verification<span className="text-red-500">*</span></label>
-                    <div className="bg-white p-3 rounded shadow-md">
-                      <div className="flex items-center gap-2">
-                        <input type="checkbox" checked required />
-                        <span>I’m not a robot</span>
-                        <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" className="w-6 h-6 ml-auto" />
-                      </div>
-                    </div>
-                  </div>
         
                   <button type="submit" className="w-full bg-blue-600 text-white font-bold py-2 rounded hover:bg-blue-700 transition">
                     Update
