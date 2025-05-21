@@ -120,7 +120,7 @@ export const CreateGroups = () => {
         </div>
 
         <label className="block mb-2 font-medium text-gray-700">
-          Start Date:<span className="text-red-500">*</span>
+          End Date:<span className="text-red-500">*</span>
         </label>
         <input
           type="date"

@@ -15,7 +15,7 @@ export const GroupCard = ({singleGroupData})=>{
                 <p className="text-sm">{singleGroupData.members} Members</p>
               </div>
               <div className="p-3 text-start text-sm text-gray-700">
-                <p>Started {singleGroupData.date} in {singleGroupData.location}</p>
+                <p>Joining last date is {singleGroupData.date} </p>
               </div>
             </div>
         </Link>

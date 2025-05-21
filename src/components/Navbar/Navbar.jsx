@@ -1,58 +1,74 @@
-import { use } from "react"
-import { Link, NavLink, useActionData } from "react-router"
-import { AuthContext } from "../../context/AuthContext"
-import { Tooltip } from 'react-tooltip'
+import { useContext, useEffect, useState } from "react";
+import { Link, NavLink } from "react-router";
+import { AuthContext } from "../../context/AuthContext";
+import { Tooltip } from 'react-tooltip';
+import { Moon, Sun } from "lucide-react";
 
-export const Navbar = ()=>{
-    const {user , logOut} = use(AuthContext);
+export const Navbar = () => {
+  const { user, logOut , isDark , setIsDark } = useContext(AuthContext);
+  
 
-    const links = 
+  const toggleTheme = () => {
+    setIsDark(prev => !prev);
+  };
+
+  const handleLogout = () => {
+    logOut().catch(error => console.log(error));
+  };
+
+  const links = (
     <>
-       <li><NavLink to='/' className={({isActive})=> isActive ? "underline" : ""}>Home</NavLink></li>
-       <li><NavLink to='/allGroups' className={({isActive})=> isActive ? "underline" : ""}>All Groups</NavLink></li>
-       <li><NavLink to='/createGroups' className={({isActive})=> isActive ? "underline" : ""}>Create Groups</NavLink></li>
-       {
-        user && <li><NavLink to='/myGroups' className={({isActive})=> isActive ? "underline" : ""}>My Groups</NavLink></li>
-       }
+      <li className={`${isDark ? "" : "text-white"}`}><NavLink to="/" className={({ isActive }) => isActive ? "underline" : ""}>Home</NavLink></li>
+      <li className={`${isDark ? "" : "text-white"}`}><NavLink to="/allGroups" className={({ isActive }) => isActive ? "underline" : ""}>All Groups</NavLink></li>
+      <li className={`${isDark ? "" : "text-white"}`}><NavLink to="/createGroups" className={({ isActive }) => isActive ? "underline" : ""}>Create Groups</NavLink></li>
+      {user && <li className={`${isDark ? "" : "text-white"}`}><NavLink to="/myGroups" className={({ isActive }) => isActive ? "underline" : ""}>My Groups</NavLink></li>}
     </>
-    const handleLogout = ()=>{
-        logOut().then((result)=>{
+  );
 
-        }).catch(error => console.log(error));
-    }
-    return(
-        <>
-          <div className=" bg-base-100  shadow-sm">
-            <div className="navbar container mx-auto px-3 md:px-6 lg:px-8 xl:px-14 ">
-               <div className="navbar-start">
-                <div className="dropdown">
-                  <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
-                  </div>
-                  <ul
-                    tabIndex={0}
-                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                    {links}
-                  </ul>
-                </div>
-                <a className=" font-medium text-xl">HobMeet</a>
-              </div>
-              <div className="navbar-center hidden lg:flex">
-                <ul className="space-x-6 flex items-center">
-                  {links}
-                </ul>
-              </div>
-              <div className="navbar-end">
-                {
-                    user ? <>
-                      <img data-tooltip-id="my-tooltip" data-tooltip-content={user.displayName} className=" w-8 rounded-full mr-3" src={user.photoURL? user.photoURL : "https://i.ibb.co.com/0jKWX0cD/user-png-33832.png"} alt="" />
-                     <Tooltip className="z-10" id="my-tooltip"/>
-                    <Link onClick={handleLogout} className="btn">Logout</Link>
-                    </> : <Link to="/login" className="btn">Login</Link>
-                }
-              </div>
+  return (
+    <div className={` transition-all duration-300 shadow-sm ${isDark ? "bg-white " : "bg-gray-900 text-white"}`}>
+      <div className="navbar container mx-auto px-3 md:px-6 lg:px-8 xl:px-14 text-black dark:text-white">
+        <div className="navbar-start">
+          <div className="dropdown">
+            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> 
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> 
+              </svg>
             </div>
-           </div> 
-        </>
-    )
-}
+            <ul tabIndex={0} className="menu menu-sm dropdown-content bg-white dark:bg-gray-800 rounded-box z-10 mt-3 w-52 p-2 shadow">
+              {links}
+            </ul>
+          </div>
+          <a className={`font-medium text-xl ${isDark ? "" : "text-white"}`}>HobMeet</a>
+        </div>
+
+        <div className="navbar-center hidden lg:flex">
+          <ul className="space-x-6 flex items-center">
+            {links}
+          </ul>
+        </div>
+
+        <div className="navbar-end flex items-center gap-4">
+
+          {/* Toggle with animation */}
+          <div onClick={toggleTheme} className={`cursor-pointer w-14 h-8 flex items-center rounded-full p-1 transition duration-300 ${isDark ? "bg-gray-700" : "bg-yellow-400"}`}>
+            <div className={`bg-white w-6 h-6 rounded-full shadow-md transform duration-300 ease-in-out ${isDark ? "translate-x-6" : "translate-x-0"}`}>
+              {isDark ? <Moon className="w-4 h-4 m-auto mt-1 text-black" /> : <Sun className="w-4 h-4 m-auto mt-1 text-yellow-500" />}
+            </div>
+          </div>
+
+          {/* User info & login/logout */}
+          {user ? (
+            <>
+              <img data-tooltip-id="my-tooltip" data-tooltip-content={user.displayName} className="w-8 h-8 rounded-full" src={user.photoURL || "https://i.ibb.co.com/0jKWX0cD/user-png-33832.png"} alt="user" />
+              <Tooltip className="z-10" id="my-tooltip" />
+              <Link onClick={handleLogout} className="btn btn-sm">Logout</Link>
+            </>
+          ) : (
+            <Link to="/login" className="btn btn-sm">Login</Link>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};

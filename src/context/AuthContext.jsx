@@ -6,6 +6,7 @@ export const AuthContext = createContext(null);
 
 export const AuthProvider = ({children})=>{
 
+    const [isDark, setIsDark] = useState(false);
     const [user , setUser] = useState("");
     const [loading , setLoading] = useState(true);
 
@@ -57,6 +58,8 @@ export const AuthProvider = ({children})=>{
         loading,
         updateUser,
         googleSignin,
+        isDark,
+        setIsDark,
     }
 
 

@@ -19,7 +19,7 @@ export const router = createBrowserRouter([
         children:[
             {
                 path: "/",
-                loader:()=> fetch("http://localhost:3000/groups"),
+                loader:()=> fetch("http://localhost:3000/ongoingGroups"),
                 element : <Home/>
             },
             {
