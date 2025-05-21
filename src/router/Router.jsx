@@ -9,10 +9,12 @@ import { CreateGroups } from "../pages/CreateGroups/CreateGroups";
 import { PrivateRoute } from "./PrivateRoute";
 import { GroupDetails } from "../pages/GroupDetails/GroupDetails";
 import { UpdateGroup } from "../pages/UpdateGroup/UpdateGroup";
+import { Error } from "../pages/Error/Error";
 
 export const router = createBrowserRouter([
     {
         path: "/",
+        errorElement : <Error/>,
         element: <MainLayout/>,
         children:[
             {
