@@ -12,19 +12,19 @@ const slides = [
     id: 1,
     title: "Welcome to Our Community",
     description: "Join groups based on your hobbies and meet like-minded people.",
-    image: "https://i.ibb.co/5XrMfSqW/image.png",
+    image: "https://i.ibb.co/pBCwQ7pG/image.png",
   },
   {
     id: 2,
     title: "Discover New Hobbies",
     description: "Explore a variety of interests and grow your skills.",
-    image: "https://i.ibb.co/bRXH0bwL/image.png",
+    image: "https://i.ibb.co/w9vGR5w/image.png",
   },
   {
     id: 3,
     title: "Make New Friends",
     description: "Connect with people near you and build lasting friendships.",
-    image: "https://i.ibb.co/mCbr4FxB/image.png",
+    image: "https://i.ibb.co/fVktGtgP/image.png",
   },
 ];
 
