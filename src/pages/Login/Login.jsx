@@ -1,7 +1,8 @@
 import { use, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router"
 import { AuthContext } from "../../context/AuthContext";
-import { Eye, EyeClosed, EyeOff } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
+import swal from 'sweetalert';
 
 export const Login = ()=>{
 
@@ -21,6 +22,7 @@ export const Login = ()=>{
         const {email , password} = Object.fromEntries(formData.entries());
 
         signinUser(email , password).then((result)=>{
+            swal("Login Successful!", "Welcome to HobMeet", "success");
             navigate(`${location.state || "/"}`)
         }).catch((error)=>{
             setErrorMessage(true);
@@ -31,6 +33,7 @@ export const Login = ()=>{
 
     const handleGoogleRegister = ()=>{
         googleSignin().then((result)=>{
+            swal("Login Successful!", "Welcome to HobMeet", "success");
             navigate(`${location.state || "/"}`);
         }).catch(erroe => console.log(erroe.message))
     }
