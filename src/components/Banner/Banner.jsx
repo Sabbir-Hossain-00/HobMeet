@@ -30,7 +30,7 @@ const slides = [
 ];
 
 export const Banner = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div className="z-0 container mx-auto px-3 md:px-6 lg:px-8 xl:px-14 w-full">
       <Swiper
@@ -44,13 +44,20 @@ export const Banner = () => {
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <div
-              className="h-[500px] xl:h-700px bg-cover bg-center flex items-center justify-center text-white text-center px-4"
-              style={{ backgroundImage: `url(${slide.image})` }}
+              className="h-[500px] xl:h-[700px] bg-cover bg-center flex items-center justify-center text-white text-center px-4"
+              style={{
+                backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.85)), url(${slide.image})`,
+              }}
             >
-              <div className="bg-black/50 p-8 rounded-xl">
+              <div className="p-8 rounded-xl">
                 <h2 className="text-2xl md:text-4xl font-semibold mb-4">{slide.title}</h2>
                 <p className="text-lg md:text-xl">{slide.description}</p>
-                <button onClick={()=> navigate("/allgroup")} className="btn border-none  bg-amber-300 hover:bg-amber-400 mt-3">Expolre More</button>
+                <button
+                  onClick={() => navigate("/allgroup")}
+                  className="btn border-none bg-amber-300 hover:bg-amber-400 mt-3"
+                >
+                  Explore More
+                </button>
               </div>
             </div>
           </SwiperSlide>
