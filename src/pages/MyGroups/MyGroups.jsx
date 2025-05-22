@@ -58,7 +58,7 @@ export const MyGroups = ()=>{
    }
 
     return(
-        <section className="py-20 container mx-auto px-3 md:px-6 lg:px-8 xl:px-14">
+        <section className="min-h-screen py-20 container mx-auto px-3 md:px-6 lg:px-8 xl:px-14">
           <h1 className="text-center text-2xl md:text-4xl mb-2 font-medium">Your Hobby Hub</h1>
           <p className="text-center mb-10 ">Manage all the hobby groups you've created in one place. Update details, remove groups, <br /> or explore your communities—right from your dashboard.</p>
           <div className=" overflow-x-auto">
