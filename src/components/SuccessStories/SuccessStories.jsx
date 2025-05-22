@@ -19,7 +19,7 @@ export const SuccessStories = () => {
         {/* Stories Grid */}
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {/* Story 1 */}
-          <div className={` rounded-xl shadow-lg p-6 hover:shadow-xl transition duration-300 ${isDark?"bg-gray-900 " : "bg-white"}`}>
+          <div className={` rounded-xl shadow-lg p-6 hover:scale-105 transition-transform duration-300 ${isDark?"bg-gray-900 " : "bg-white"}`}>
             <div className="flex items-center gap-4 mb-4">
               <img
                 src="https://randomuser.me/api/portraits/women/65.jpg"
@@ -37,7 +37,7 @@ export const SuccessStories = () => {
           </div>
 
           {/* Story 2 */}
-          <div className={` rounded-xl shadow-lg p-6 hover:shadow-xl transition duration-300 ${isDark?"bg-gray-900  " : "bg-white"}`}>
+          <div className={` rounded-xl shadow-lg p-6 hover:scale-105 transition-transform duration-300 ${isDark?"bg-gray-900  " : "bg-white"}`}>
             <div className="flex items-center gap-4 mb-4">
               <img
                 src="https://randomuser.me/api/portraits/men/51.jpg"
@@ -55,7 +55,7 @@ export const SuccessStories = () => {
           </div>
 
           {/* Story 3 */}
-          <div className={` rounded-xl shadow-lg p-6 hover:shadow-xl transition duration-300 ${isDark?"bg-gray-900 " : "bg-white"}`}>
+          <div className={` rounded-xl shadow-lg p-6 hover:scale-105 transition-transform duration-300 ${isDark?"bg-gray-900 " : "bg-white"}`}>
             <div className="flex items-center gap-4 mb-4">
               <img
                 src="https://randomuser.me/api/portraits/women/88.jpg"

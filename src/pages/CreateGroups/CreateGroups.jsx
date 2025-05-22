@@ -1,8 +1,10 @@
 import { use } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router";
 
 export const CreateGroups = () => {
   const { user, isDark } = use(AuthContext);
+  const navigate = useNavigate();
 
   const handleCreateGroup = (e) => {
     e.preventDefault();
@@ -10,7 +12,7 @@ export const CreateGroups = () => {
     const formData = new FormData(form);
     const groupData = Object.fromEntries(formData.entries());
 
-    fetch("http://localhost:3000/groups", {
+    fetch("https://hobmeet-server.vercel.app/groups", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -21,8 +23,10 @@ export const CreateGroups = () => {
       .then((data) => {
         if(data.insertedId){
           swal(" Group Created Successfully!",);
+          navigate("/allGroups")
         }
       });
+
   };
 
   return (
@@ -107,7 +111,7 @@ export const CreateGroups = () => {
           type="submit"
           className="btn w-full border-none bg-purple-500 text-white font-bold py-2 rounded hover:bg-purple-600 transition"
         >
-          Submit
+          Create
         </button>
       </form>
     </div>

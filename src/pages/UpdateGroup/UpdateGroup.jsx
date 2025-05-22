@@ -1,10 +1,11 @@
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import { use } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 export const UpdateGroup = () => {
   const groupData = useLoaderData();
   const { isDark } = use(AuthContext);
+  const navigate = useNavigate();
 
   const handleUpdateGroup = (e) => {
     e.preventDefault();
@@ -12,7 +13,7 @@ export const UpdateGroup = () => {
     const formData = new FormData(form);
     const updateGroup = Object.fromEntries(formData.entries());
 
-    fetch(`http://localhost:3000/group/${groupData._id}`, {
+    fetch(`https://hobmeet-server.vercel.app/group/${groupData._id}`, {
       method: "PUT",
       headers: {
         "Content-type": "application/json",
@@ -32,16 +33,16 @@ export const UpdateGroup = () => {
   };
 
   return (
-    <div
-      className={`min-h-screen flex items-center justify-center p-4 ${
-        isDark
+    <section className={isDark
           ? "bg-gradient-to-br via-blue-950 from-gray-900 to-black text-gray-200"
-          : "bg-gradient-to-br from-purple-200 via-blue-100 to-blue-200"
-      }`}
+          : "bg-gradient-to-br from-purple-200 via-blue-100 to-blue-200"}>
+        <div
+      className={`min-h-screen container mx-auto px-3 md:px-6 lg:px-8 xl:px-14  p-4 `}
     >
+      <button onClick={()=>navigate(-1)} className="btn btn-sm border-none bg-rose-700 text-white">Go Back</button>
       <form
         onSubmit={handleUpdateGroup}
-        className={`p-5 md:p-8 rounded-xl w-full max-w-xl shadow-xl backdrop-blur-md ${
+        className={`p-5 mx-auto mt-10 md:p-8 rounded-xl w-full max-w-xl shadow-xl backdrop-blur-md ${
           isDark
             ? "bg-black/20 border border-white/10"
             : "bg-white/10 border border-black/10"
@@ -190,5 +191,6 @@ export const UpdateGroup = () => {
         </button>
       </form>
     </div>
+    </section>
   );
 };

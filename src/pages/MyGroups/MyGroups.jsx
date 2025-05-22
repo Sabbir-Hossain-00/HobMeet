@@ -9,7 +9,7 @@ export const MyGroups = ()=>{
   const navigate = useNavigate();
 
   const fetchData = async()=>{
-    const res = await fetch(`http://localhost:3000/mygroups/${user.email}`);
+    const res = await fetch(`https://hobmeet-server.vercel.app/mygroups/${user.email}`);
     const data = await res.json();
     setGroupData(data)
   }
@@ -29,7 +29,7 @@ export const MyGroups = ()=>{
     dangerMode: true,
   }).then((willDelete) => {
     if (willDelete) {
-      fetch(`http://localhost:3000/group/${id}`, {
+      fetch(`https://hobmeet-server.vercel.app/group/${id}`, {
         method: "DELETE",
       })
       .then(res => res.json())

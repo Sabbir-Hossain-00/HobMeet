@@ -9,7 +9,7 @@ export const Login = ()=>{
     const location = useLocation();
     const [errorMessage , setErrorMessage] = useState(false)
 
-    console.log(location);
+    // console.log(location);
 
     const handleSignIn = (e)=>{
         setErrorMessage(false)

@@ -44,7 +44,7 @@ export const Banner = () => {
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <div
-              className="h-[500px] xl:h-[700px] bg-cover bg-center flex items-center justify-center text-white text-center px-4"
+              className="h-[300px] md:h-[500px] xl:h-[700px] bg-cover bg-center flex items-center justify-center text-white text-center px-4"
               style={{
                 backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.85)), url(${slide.image})`,
               }}
@@ -53,7 +53,7 @@ export const Banner = () => {
                 <h2 className="text-2xl md:text-4xl font-semibold mb-4">{slide.title}</h2>
                 <p className="text-lg md:text-xl">{slide.description}</p>
                 <button
-                  onClick={() => navigate("/allgroup")}
+                  onClick={() => navigate("/allgroups")}
                   className="btn border-none bg-amber-300 hover:bg-amber-400 mt-3"
                 >
                   Explore More

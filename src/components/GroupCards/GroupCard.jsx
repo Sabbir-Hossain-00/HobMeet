@@ -16,10 +16,10 @@ export const GroupCard = ({singleGroupData})=>{
                      alt="Avatar"
                      className="w-20 h-20 rounded-full border-4 border-white/30 shadow-md"
                    />
-                   <h2 className={`mt-4 text-xl font-semibold ${isDark ? "text-white":"text-black"}`}>{singleGroupData.groupName}</h2>
-                   <p className={`text-sm  ${isDark ? "text-white/70" :"text-black"}`}>{singleGroupData.userName}</p>
+                   <h2 className={`mt-4 text-2xl font-semibold ${isDark ? "text-white":"text-black"}`}>{singleGroupData.groupName}</h2>
+                   <p className={`text-sm  ${isDark ? "text-white/70" :"text-black"}`}>{singleGroupData.hobbyCategory}</p>
          
-                   <p className={`mt-4 text-sm  ${isDark? "text-white/80":"text-black"}`}>
+                   <p className={`mt-4 text-base  ${isDark? "text-white/80":"text-black"}`}>
                      {singleGroupData.description}
                    </p>
                  </div>

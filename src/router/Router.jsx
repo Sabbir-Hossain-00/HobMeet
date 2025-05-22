@@ -19,12 +19,12 @@ export const router = createBrowserRouter([
         children:[
             {
                 path: "/",
-                loader:()=> fetch("http://localhost:3000/ongoingGroups"),
+                loader:()=> fetch("https://hobmeet-server.vercel.app/ongoingGroups"),
                 element : <Home/>
             },
             {
                 path : "/allGroups",
-                loader: ()=> fetch("http://localhost:3000/groups"),
+                loader: ()=> fetch("https://hobmeet-server.vercel.app/groups"),
                 element: <AllGroups/>
             },
             {
@@ -33,17 +33,16 @@ export const router = createBrowserRouter([
             },
             {
                 path : "/myGroups",
-                // loader: ()=> fetch(`http://localhost:3000/mygroups/${user.email}`),
                 element : <PrivateRoute><MyGroups/></PrivateRoute>
             },
             {
                 path: "/group/:id",
-                loader: ({params})=> fetch(`http://localhost:3000/group/${params.id}`),
+                loader: ({params})=> fetch(`https://hobmeet-server.vercel.app/group/${params.id}`),
                 element: <PrivateRoute><GroupDetails/></PrivateRoute>
             },
             {
                 path: "/updategroup/:id",
-                loader: ({params})=> fetch(`http://localhost:3000/group/${params.id}`),
+                loader: ({params})=> fetch(`https://hobmeet-server.vercel.app/group/${params.id}`),
                 element: <PrivateRoute><UpdateGroup/></PrivateRoute>
             },
             {
