@@ -4,8 +4,8 @@ import { AuthContext } from "../../context/AuthContext";
 export const SuccessStories = () => {
     const {isDark} = use(AuthContext);
   return (
-    <section className="container mx-auto px-3 md:px-6 lg:px-8 xl:px-14 md:py-16 pb-10">
-      <div className={` md:p-10 p-2 ${isDark ? "bg-gradient-to-b from-black rounded-2xl to-gray-900]": "bg-gradient-to-b from-amber-50 to-slate-100"}`}>
+    <section className=" container mx-auto px-3 md:px-6 lg:px-8 xl:px-14 md:py-16 pb-10">
+      <div className={` md:py-20 md:px-10 p-2 ${isDark ? "bg-gradient-to-b from-black rounded-2xl to-gray-900]": "bg-gradient-to-b from-amber-50 to-slate-100"}`}>
         {/* Section Title */}
         <div className="text-center mb-12">
           <h2 className={`text-3xl md:text-4xl font-bold  mb-2 ${isDark? "text-gray-100" : "text-gray-800"}`} >

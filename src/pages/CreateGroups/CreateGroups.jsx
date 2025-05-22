@@ -19,7 +19,9 @@ export const CreateGroups = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        if(data.insertedId){
+          swal(" Group Created Successfully!",);
+        }
       });
   };
 

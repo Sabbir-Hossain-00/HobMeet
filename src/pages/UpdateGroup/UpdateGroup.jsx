@@ -21,7 +21,13 @@ export const UpdateGroup = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        if(data.matchedCount){
+          swal({
+              title: "Group Updated Successfully",
+              icon: "success",
+              button: "Ok",
+            });
+        }
       });
   };
 

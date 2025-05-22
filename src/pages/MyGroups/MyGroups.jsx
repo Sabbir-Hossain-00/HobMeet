@@ -20,16 +20,36 @@ export const MyGroups = ()=>{
 
  
 
-  const handleDeleteGroup = (id)=>{
-    fetch(`http://localhost:3000/group/${id}`, {
-      method: "DELETE"
-    }).then(res => res.json()).then((data)=>{
-      if(data.deletedCount){
-        const remainingGroup = groupData.filter((group)=> group._id !== id)
-        setGroupData(remainingGroup)
-      }
-    })
-  }
+  const handleDeleteGroup = (id) => {
+  swal({
+    title: "Are you sure?",
+    text: "Do You want to Delete this Group ?",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  }).then((willDelete) => {
+    if (willDelete) {
+      fetch(`http://localhost:3000/group/${id}`, {
+        method: "DELETE",
+      })
+      .then(res => res.json())
+      .then((data) => {
+        if (data.deletedCount) {
+          swal("Deleted", "Your file has been deleted" ,{
+            icon: "success",
+          });
+          const remainingGroup = groupData.filter(group => group._id !== id);
+          setGroupData(remainingGroup);
+        } else {
+          swal("Failed to delete the file!", { icon: "error" });
+        }
+      })
+      .catch(() => {
+        swal("Something went wrong!", { icon: "error" });
+      });
+    } 
+  });
+};
 
 
     return(

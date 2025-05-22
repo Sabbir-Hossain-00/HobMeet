@@ -14,7 +14,7 @@ export const GroupDetails = () => {
     if (groupDate >= today) {
       swal("Success!", "You joined the group successfully!", "success");
     } else {
-      swal("Error!", "The group is no longer active.", "error");
+      swal("Opps!", "The group is no longer active.", "error");
     }
   };
 
