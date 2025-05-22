@@ -12,10 +12,10 @@ export const Footer = ()=>{
                 <h1 className=" text-2xl font-medium ">HobMeet</h1>
               </nav>
               <ul className=" flex md:flex-row flex-col justify-center items-center gap-5 text-gray-300">
-                  <li className={`${isDark ? "text-white" : "text-black"}`}><NavLink to="/" className={({ isActive }) => isActive ? "underline" : ""}>Home</NavLink></li>
-                 <li className={`${isDark ? "text-white" : "text-black"}`}><NavLink to="/allGroups" className={({ isActive }) => isActive ? "underline" : ""}>All Groups</NavLink></li>
-                 <li className={`${isDark ? "text-white" : "text-black"}`}><NavLink to="/createGroups" className={({ isActive }) => isActive ? "underline" : ""}>Create Groups</NavLink></li>
-                 {user && <li className={`${isDark ? "text-white" : "text-black"}`}><NavLink to="/myGroups" className={({ isActive }) => isActive ? "underline" : ""}>My Groups</NavLink></li>}
+                  <li className={`${isDark ? "text-white" : "text-black"}`}><NavLink to="/" className={({ isActive }) => isActive ? "text-amber-400 font-medium" : "font-medium"}>Home</NavLink></li>
+                 <li className={`${isDark ? "text-white" : "text-black"}`}><NavLink to="/allGroups" className={({ isActive }) => isActive ? "text-amber-400 font-medium" : "font-medium"}>All Groups</NavLink></li>
+                 <li className={`${isDark ? "text-white" : "text-black"}`}><NavLink to="/createGroups" className={({ isActive }) => isActive ? "text-amber-400 font-medium" : "font-medium"}>Create Groups</NavLink></li>
+                 {user && <li className={`${isDark ? "text-white" : "text-black"}`}><NavLink to="/myGroups" className={({ isActive }) => isActive ? "text-amber-400 font-medium" : "font-medium"}>My Groups</NavLink></li>}
               </ul>
               <div>
                 <p className=" text-sm">© 2025 HobMeet. All rights reserved.</p>
