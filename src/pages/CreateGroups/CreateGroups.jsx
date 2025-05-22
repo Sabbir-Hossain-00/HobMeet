@@ -1,9 +1,10 @@
-import { use } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router";
+import swal from "sweetalert";
 
 export const CreateGroups = () => {
-  const { user, isDark } = use(AuthContext);
+  const { user, isDark } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleCreateGroup = (e) => {
@@ -21,12 +22,11 @@ export const CreateGroups = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if(data.insertedId){
-          swal(" Group Created Successfully!",);
-          navigate("/allGroups")
+        if (data.insertedId) {
+          swal("Group Created Successfully!");
+          navigate("/allGroups");
         }
       });
-
   };
 
   return (
@@ -40,18 +40,29 @@ export const CreateGroups = () => {
       <form
         onSubmit={handleCreateGroup}
         className={`backdrop-blur-lg border p-5 md:p-8 rounded-xl w-full max-w-xl shadow-2xl ${
-          isDark
-            ? "bg-white/5 border-white/20"
-            : "bg-white/10 border-white/50"
+          isDark ? "bg-white/5 border-white/20" : "bg-white/10 border-white/50"
         }`}
       >
         <h2 className="text-2xl font-bold text-center mb-6">Create a Group</h2>
 
-        <label className="block mb-2 font-medium">Group Name:<span className="text-red-500">*</span></label>
-        <input type="text" name="groupName" className="w-full p-2 mb-4 border rounded bg-transparent" required />
+        <label className="block mb-2 font-medium">
+          Group Name:<span className="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          name="groupName"
+          className="w-full p-2 mb-4 border rounded bg-transparent"
+          required
+        />
 
-        <label className="block mb-2 font-medium">Hobby Category:<span className="text-red-500">*</span></label>
-        <select name="hobbyCategory" required className="w-full p-2 mb-4 border rounded bg-transparent">
+        <label className="block mb-2 font-medium">
+          Hobby Category:<span className="text-red-500">*</span>
+        </label>
+        <select
+          name="hobbyCategory"
+          required
+          className="w-full p-2 mb-4 border rounded bg-transparent"
+        >
           <option value="Drawing & Painting">Drawing & Painting</option>
           <option value="Photography">Photography</option>
           <option value="Video Gaming">Video Gaming</option>
@@ -64,7 +75,9 @@ export const CreateGroups = () => {
 
         <div className="flex md:flex-row flex-col gap-2 mb-4">
           <div className="w-full">
-            <label className="block mb-2 font-medium">User Name:<span className="text-red-500">*</span></label>
+            <label className="block mb-2 font-medium">
+              User Name:<span className="text-red-500">*</span>
+            </label>
             <input
               type="text"
               name="userName"
@@ -75,7 +88,9 @@ export const CreateGroups = () => {
             />
           </div>
           <div className="w-full">
-            <label className="block mb-2 font-medium">User Email:<span className="text-red-500">*</span></label>
+            <label className="block mb-2 font-medium">
+              User Email:<span className="text-red-500">*</span>
+            </label>
             <input
               type="email"
               name="email"
@@ -89,23 +104,60 @@ export const CreateGroups = () => {
 
         <div className="flex md:flex-row flex-col gap-2 mb-4">
           <div className="w-full">
-            <label className="block mb-2 font-medium">Meeting Location:<span className="text-red-500">*</span></label>
-            <input type="text" name="location" className="w-full p-2 border rounded bg-transparent" required />
+            <label className="block mb-2 font-medium">
+              Meeting Location:<span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              name="location"
+              className="w-full p-2 border rounded bg-transparent"
+              required
+            />
           </div>
           <div className="w-full">
-            <label className="block mb-2 font-medium">Max Members:<span className="text-red-500">*</span></label>
-            <input type="text" name="members" className="w-full p-2 border rounded bg-transparent" required />
+            <label className="block mb-2 font-medium">
+              Max Members:<span className="text-red-500">*</span>
+            </label>
+            <input
+              type="number"
+              name="members"
+              min="1"
+              className="w-full p-2 border rounded bg-transparent"
+              required
+            />
           </div>
         </div>
 
-        <label className="block mb-2 font-medium">End Date:<span className="text-red-500">*</span></label>
-        <input type="date" name="date" className="w-full p-2 mb-4 border rounded bg-transparent" required />
+        <label className="block mb-2 font-medium">
+          End Date:<span className="text-red-500">*</span>
+        </label>
+        <input
+          type="date"
+          name="date"
+          min={new Date().toISOString().split("T")[0]}
+          className="w-full p-2 mb-4 border rounded bg-transparent"
+          required
+        />
 
-        <label className="block mb-2 font-medium">Image URL:<span className="text-red-500">*</span></label>
-        <input type="text" name="photo" className="w-full p-2 mb-4 border rounded bg-transparent" required />
+        <label className="block mb-2 font-medium">
+          Image URL:<span className="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          name="photo"
+          className="w-full p-2 mb-4 border rounded bg-transparent"
+          required
+        />
 
-        <label className="block mb-2 font-medium">Description:<span className="text-red-500">*</span></label>
-        <input type="text" name="description" className="w-full p-2 mb-4 border rounded bg-transparent" required />
+        <label className="block mb-2 font-medium">
+          Description:<span className="text-red-500">*</span>
+        </label>
+        <textarea
+          name="description"
+          rows="4"
+          className="w-full p-2 mb-4 border rounded bg-transparent"
+          required
+        ></textarea>
 
         <button
           type="submit"
