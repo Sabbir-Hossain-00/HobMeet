@@ -18,10 +18,10 @@ export const Navbar = () => {
 
   const links = (
     <>
-      <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/" className={({ isActive }) => isActive ? "underline" : ""}>Home</NavLink></li>
-      <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/allGroups" className={({ isActive }) => isActive ? "underline" : ""}>All Groups</NavLink></li>
-      <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/createGroups" className={({ isActive }) => isActive ? "underline" : ""}>Create Groups</NavLink></li>
-      {user && <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/myGroups" className={({ isActive }) => isActive ? "underline" : ""}>My Groups</NavLink></li>}
+      <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/" className={({ isActive }) => isActive ? "text-amber-400 font-medium" : "font-medium"}>Home</NavLink></li>
+      <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/allGroups" className={({ isActive }) => isActive ? "text-amber-400 font-medium" : "font-medium"}>All Groups</NavLink></li>
+      <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/createGroups" className={({ isActive }) => isActive ? "text-amber-400 font-medium" : "font-medium"}>Create Groups</NavLink></li>
+      {user && <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/myGroups" className={({ isActive }) => isActive ? "text-amber-400 font-medium" : "font-medium"}>My Groups</NavLink></li>}
     </>
   );
 
@@ -51,7 +51,7 @@ export const Navbar = () => {
         <div className="navbar-end flex items-center gap-4">
 
           {/* Toggle with animation */}
-          <div onClick={toggleTheme} className={`cursor-pointer w-14 h-8 flex items-center rounded-full p-1 transition duration-300 ${isDark ? "bg-gray-700" : "bg-yellow-400"}`}>
+          <div onClick={toggleTheme} className={`cursor-pointer w-14 h-8 flex items-center rounded-full p-1 transition duration-300 ${isDark ? "bg-gray-700" : "bg-amber-400"}`}>
             <div className={`bg-white w-6 h-6 rounded-full shadow-md transform duration-300 ease-in-out ${isDark ? "translate-x-6" : "translate-x-0"}`}>
               {isDark ? <Moon className="w-4 h-4 m-auto mt-1 text-black" /> : <Sun className="w-4 h-4 m-auto mt-1 text-yellow-500" />}
             </div>
