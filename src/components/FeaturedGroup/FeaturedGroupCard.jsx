@@ -8,7 +8,7 @@ export const FeaturedGroupCard = ({group})=>{
     return(
         <>
         <Zoom>
-          <div className={`card bg-base-100 shadow-sm ${isDark?"text-black" : ""}`}>
+          <div className={`card  shadow-sm ${isDark? "text-white bg-black" :"text-black bg-base-100" }`}>
              <figure className="h-[150px] xl:h-[250px]">
                <img
                  src={group.photo}

@@ -1,8 +1,11 @@
+import { use } from "react";
 import { useLoaderData } from "react-router";
 import swal from 'sweetalert';
+import { AuthContext } from "../../context/AuthContext";
 
 export const GroupDetails = () => {
   const groupDetails = useLoaderData();
+  const {isDark} = use(AuthContext);
 
   const handleJoinGroup = () => {
     const today = new Date(); 
@@ -17,7 +20,7 @@ export const GroupDetails = () => {
 
   return (
     <section className="min-h-screen  py-10 container mx-auto px-3 md:px-6 lg:px-8 xl:px-14">
-      <div className="mt-20 py-20 p-10 flex flex-col md:flex-row gap-6 items-start justify-start  bg-gradient-to-b from-amber-50 to-slate-50 border border-slate-100 rounded-xl shadow-md">
+      <div className={`mt-20 py-20 p-10 flex flex-col md:flex-row gap-6 items-start justify-start  rounded-xl shadow-md ${isDark ? "bg-gradient-to-b from-gray-800 to-gray-900 border border-gray-700":"bg-gradient-to-b from-amber-50 to-slate-50 border border-slate-100"}`}>
         {/* Image */}
         <figure className="w-full md:w-1/2">
           <img
@@ -28,8 +31,8 @@ export const GroupDetails = () => {
         </figure>
 
         {/* Content */}
-        <div className="w-full md:w-1/2 space-y-2 text-black">
-          <h2 className="text-2xl font-bold text-gray-800">{groupDetails.groupName}</h2>
+        <div className={`w-full md:w-1/2 space-y-2  ${isDark ? "text-white":"text-black"}`}>
+          <h2 className={`text-2xl font-bold  ${isDark ? "text-white":"text-gray-800"}`}>{groupDetails.groupName}</h2>
           <p><span className="font-semibold">Category:</span> {groupDetails.hobbyCategory}</p>
           <p><span className="font-semibold">Author:</span> {groupDetails.userName}</p>
           <p><span className="font-semibold">Location:</span> {groupDetails.location}</p>
@@ -39,7 +42,7 @@ export const GroupDetails = () => {
           <div className="pt-3">
             <button
               onClick={handleJoinGroup}
-              className="bg-amber-400 hover:bg-amber-500 text-white font-medium px-4 py-2 rounded btn"
+              className="bg-amber-400 border-none hover:bg-amber-500 text-white font-medium px-4 py-2 rounded btn"
             >
               Join Now
             </button>
