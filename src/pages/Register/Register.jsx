@@ -2,6 +2,7 @@ import { use, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router"
 import { AuthContext } from "../../context/AuthContext";
 import swal from 'sweetalert';
+import { Eye, EyeOff } from "lucide-react";
 
 
 export const Register = ()=>{
@@ -10,7 +11,8 @@ export const Register = ()=>{
     const location = useLocation();
     const navigate = useNavigate();
     const [errorMessage , setErrorMessage] = useState(false);
-    const [passError , setPassError] = useState("")
+    const [passError , setPassError] = useState("");
+    const [isShow , setIsShow] = useState(false)
 
     const handleRegister = (e)=>{
         e.preventDefault();
@@ -79,7 +81,14 @@ export const Register = ()=>{
                     <input type="email" name="email" required className="input" placeholder="Email" />
 
                     <label className="label">Password</label>
-                    <input type="password" name="password" className="input" required placeholder="Password" />
+                    <div className="relative">
+                        <input type={`${isShow ? "text" : "password"}`} name="password" className="input" placeholder="Password" />
+                        <div onClick={()=>setIsShow(!isShow)} className=" absolute top-2 right-7">
+                            {
+                                isShow ? <EyeOff /> : <Eye/>
+                            }
+                        </div>
+                    </div>
                     <p className="text-xs font-medium text-red-700">{passError}</p>
 
                     <button className="btn btn-neutral mt-4">Register</button>

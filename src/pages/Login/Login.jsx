@@ -1,13 +1,15 @@
 import { use, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router"
 import { AuthContext } from "../../context/AuthContext";
+import { Eye, EyeClosed, EyeOff } from "lucide-react";
 
 export const Login = ()=>{
 
     const {signinUser , googleSignin ,} = use(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
-    const [errorMessage , setErrorMessage] = useState(false)
+    const [errorMessage , setErrorMessage] = useState(false);
+    const [isShow , setIsShow] = useState(false)
 
     // console.log(location);
 
@@ -43,10 +45,17 @@ export const Login = ()=>{
                 <form onSubmit={handleSignIn} className="fieldset">
 
                     <label className="label">Email</label>
-                    <input type="email" name="email" className="input" placeholder="Email" />
+                    <input type="email" name="email" className="input" required placeholder="Email" />
 
                     <label className="label">Password</label>
-                    <input type="password" name="password" className="input" placeholder="Password" />
+                    <div className="relative">
+                        <input type={`${isShow ? "text" : "password"}`} required name="password" className="input" placeholder="Password" />
+                        <div onClick={()=>setIsShow(!isShow)} className=" absolute top-2 right-7">
+                            {
+                                isShow ? <EyeOff /> : <Eye/>
+                            }
+                        </div>
+                    </div>
 
                     <button className="btn btn-neutral mt-4">Login</button>
                 </form>
