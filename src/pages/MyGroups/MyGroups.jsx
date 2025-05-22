@@ -2,16 +2,20 @@ import { use, useEffect, useState } from "react";
 import { useNavigate } from "react-router"
 import { AuthContext } from "../../context/AuthContext";
 import { MyGroupsEmpty } from "./MyGroupsEmpty";
+import { Loader } from "../Loader/Loader";
 
 
 export const MyGroups = ()=>{
   const {user , isDark} = use(AuthContext)
   const [groupData , setGroupData] = useState([]);
+  const [isLoading , setIsLoading] = useState(true)
   const navigate = useNavigate();
 
+  
   const fetchData = async()=>{
     const res = await fetch(`https://hobmeet-server.vercel.app/mygroups/${user.email}`);
     const data = await res.json();
+    setIsLoading(false)
     setGroupData(data)
   }
 
@@ -52,6 +56,9 @@ export const MyGroups = ()=>{
   });
 };
 
+    if(isLoading){
+      return <Loader/>
+    }
    
     if(groupData.length === 0){
       return <MyGroupsEmpty/>

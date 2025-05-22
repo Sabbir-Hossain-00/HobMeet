@@ -135,7 +135,7 @@ export const CreateGroups = () => {
           type="date"
           name="date"
           min={new Date().toISOString().split("T")[0]}
-          className="w-full p-2 mb-4 border rounded bg-transparent"
+          className="w-full p-2 mb-4 border  rounded bg-transparent"
           required
         />
 
