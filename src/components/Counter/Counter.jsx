@@ -6,7 +6,9 @@ import { AlarmClockCheck, Clock8, ContactRound, FileCheck, UsersRound } from "lu
 export const Counter = ()=>{
     const {isDark} = use(AuthContext)
     return(
-        <>
+        <section>
+            <h1 className=" text-2xl md:text-4xl font-medium text-center mb-3">Community Insights</h1>
+            <p className=" text-center mb-10">Track the pulse of HobMeet: how many groups formed, joined, and still growing — all in real time</p>
            <div className="pb-10 container mx-auto px-3 md:px-6 lg:px-8 xl:px-14">
                 <div className=" grid grid-cols-2 md:grid-cols-4 gap-6">
                     <div className={`card shadow px-3 py-6 flex items-center justify-center flex-col ${isDark ? "bg-black" :"bg-white"}`}>
@@ -39,6 +41,6 @@ export const Counter = ()=>{
                     </div>
                 </div>
              </div>
-        </>
+        </section>
     )
 }

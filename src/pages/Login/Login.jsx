@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 export const Login = ()=>{
 
-    const {signinUser , googleSignin} = use(AuthContext);
+    const {signinUser , googleSignin ,} = use(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -32,10 +32,10 @@ export const Login = ()=>{
 
 
     return(
-        <>
+        <section className=" min-h-screen  flex justify-center items-center py-10 container mx-auto px-3 md:px-6 lg:px-8 xl:px-14">
             
-        <div className="card bg-base-100 mx-auto mt-20 w-full max-w-sm shrink-0 shadow-2xl">
-            <div className="card-body">
+        <div className="  card bg-base-100 mx-auto  w-full max-w-sm shrink-0 shadow-2xl *:">
+            <div className="card-body text-black">
                 <h1 className=" text-3xl font-medium text-center mt-4">Login Now</h1>
                 <form onSubmit={handleSignIn} className="fieldset">
 
@@ -56,6 +56,6 @@ export const Login = ()=>{
             </div>
         </div>
 
-        </>
+        </section>
     )
 }
