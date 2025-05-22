@@ -2,7 +2,7 @@ import { use } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 export const CreateGroups = () => {
-  const { user } = use(AuthContext);
+  const { user, isDark } = use(AuthContext);
 
   const handleCreateGroup = (e) => {
     e.preventDefault();
@@ -24,33 +24,28 @@ export const CreateGroups = () => {
   };
 
   return (
-    <div className=" min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-300 via-blue-200 to-blue-300 p-4">
+    <div
+      className={`min-h-screen flex items-center justify-center p-4 transition-all duration-500 ${
+        isDark
+          ? "bg-gradient-to-br from-gray-900 via-purple-900 to-black text-gray-300"
+          : "bg-gradient-to-br from-purple-300 via-blue-200 to-blue-300 text-gray-800"
+      }`}
+    >
       <form
         onSubmit={handleCreateGroup}
-        className="bg-white/10 backdrop-blur-lg border border-white/50 p-8 rounded-xl w-full max-w-xl shadow-2xl"
+        className={`backdrop-blur-lg border p-5 md:p-8 rounded-xl w-full max-w-xl shadow-2xl ${
+          isDark
+            ? "bg-white/5 border-white/20"
+            : "bg-white/10 border-white/50"
+        }`}
       >
-        <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">
-          Create a Group
-        </h2>
+        <h2 className="text-2xl font-bold text-center mb-6">Create a Group</h2>
 
-        <label className="block mb-2 font-medium text-gray-700">
-          Group Name:<span className="text-red-500">*</span>
-        </label>
-        <input
-          type="text"
-          name="groupName"
-          className="w-full p-2 mb-4 border rounded"
-          required
-        />
+        <label className="block mb-2 font-medium">Group Name:<span className="text-red-500">*</span></label>
+        <input type="text" name="groupName" className="w-full p-2 mb-4 border rounded bg-transparent" required />
 
-        <label className="block mb-2 font-medium text-gray-700">
-          Hobby Category:<span className="text-red-500">*</span>
-        </label>
-        <select
-          className="w-full p-2 mb-4 border rounded"
-          name="hobbyCategory"
-          required
-        >
+        <label className="block mb-2 font-medium">Hobby Category:<span className="text-red-500">*</span></label>
+        <select name="hobbyCategory" required className="w-full p-2 mb-4 border rounded bg-transparent">
           <option value="Drawing & Painting">Drawing & Painting</option>
           <option value="Photography">Photography</option>
           <option value="Video Gaming">Video Gaming</option>
@@ -61,97 +56,54 @@ export const CreateGroups = () => {
           <option value="Writing">Writing</option>
         </select>
 
-        <div className="flex gap-2 mb-4">
+        <div className="flex md:flex-row flex-col gap-2 mb-4">
           <div className="w-full">
-            <label className="block mb-2 font-medium text-gray-700">
-              User Name:<span className="text-red-500">*</span>
-            </label>
+            <label className="block mb-2 font-medium">User Name:<span className="text-red-500">*</span></label>
             <input
               type="text"
               name="userName"
-              placeholder="Name"
               value={user.displayName}
               readOnly
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border rounded bg-transparent"
               required
             />
           </div>
           <div className="w-full">
-            <label className="block mb-2 font-medium text-gray-700">
-              User Email:<span className="text-red-500">*</span>
-            </label>
+            <label className="block mb-2 font-medium">User Email:<span className="text-red-500">*</span></label>
             <input
               type="email"
               name="email"
-              placeholder="Email"
               value={user.email}
               readOnly
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border rounded bg-transparent"
               required
             />
           </div>
         </div>
 
-        <div className="flex gap-2 mb-4">
+        <div className="flex md:flex-row flex-col gap-2 mb-4">
           <div className="w-full">
-            <label className="block mb-2 font-medium text-gray-700">
-              Meeting Location:<span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              name="location"
-              placeholder="Location"
-              className="w-full p-2 border rounded"
-              required
-            />
+            <label className="block mb-2 font-medium">Meeting Location:<span className="text-red-500">*</span></label>
+            <input type="text" name="location" className="w-full p-2 border rounded bg-transparent" required />
           </div>
           <div className="w-full">
-            <label className="block mb-2 font-medium text-gray-700">
-              Max Members:<span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              name="members"
-              placeholder="Members"
-              className="w-full p-2 border rounded"
-              required
-            />
+            <label className="block mb-2 font-medium">Max Members:<span className="text-red-500">*</span></label>
+            <input type="text" name="members" className="w-full p-2 border rounded bg-transparent" required />
           </div>
         </div>
 
-        <label className="block mb-2 font-medium text-gray-700">
-          End Date:<span className="text-red-500">*</span>
-        </label>
-        <input
-          type="date"
-          name="date"
-          className="w-full p-2 mb-4 border rounded"
-          required
-        />
+        <label className="block mb-2 font-medium">End Date:<span className="text-red-500">*</span></label>
+        <input type="date" name="date" className="w-full p-2 mb-4 border rounded bg-transparent" required />
 
-        <label className="block mb-2 font-medium text-gray-700">
-          Image URL:<span className="text-red-500">*</span>
-        </label>
-        <input
-          type="text"
-          name="photo"
-          className="w-full p-2 mb-4 border rounded"
-          required
-        />
+        <label className="block mb-2 font-medium">Image URL:<span className="text-red-500">*</span></label>
+        <input type="text" name="photo" className="w-full p-2 mb-4 border rounded bg-transparent" required />
 
-        <label className="block mb-2 font-medium text-gray-700">
-          Description:<span className="text-red-500">*</span>
-        </label>
-        <input
-          type="text"
-          name="description"
-          className="w-full p-2 mb-4 border rounded"
-          required
-        />
+        <label className="block mb-2 font-medium">Description:<span className="text-red-500">*</span></label>
+        <input type="text" name="description" className="w-full p-2 mb-4 border rounded bg-transparent" required />
 
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white font-bold py-2 rounded hover:bg-blue-700 transition"
+          className="btn w-full border-none bg-purple-500 text-white font-bold py-2 rounded hover:bg-purple-600 transition"
         >
           Submit
         </button>

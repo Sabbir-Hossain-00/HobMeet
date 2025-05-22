@@ -18,19 +18,19 @@ export const Navbar = () => {
 
   const links = (
     <>
-      <li className={`${isDark ? "" : "text-white"}`}><NavLink to="/" className={({ isActive }) => isActive ? "underline" : ""}>Home</NavLink></li>
-      <li className={`${isDark ? "" : "text-white"}`}><NavLink to="/allGroups" className={({ isActive }) => isActive ? "underline" : ""}>All Groups</NavLink></li>
-      <li className={`${isDark ? "" : "text-white"}`}><NavLink to="/createGroups" className={({ isActive }) => isActive ? "underline" : ""}>Create Groups</NavLink></li>
-      {user && <li className={`${isDark ? "" : "text-white"}`}><NavLink to="/myGroups" className={({ isActive }) => isActive ? "underline" : ""}>My Groups</NavLink></li>}
+      <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/" className={({ isActive }) => isActive ? "underline" : ""}>Home</NavLink></li>
+      <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/allGroups" className={({ isActive }) => isActive ? "underline" : ""}>All Groups</NavLink></li>
+      <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/createGroups" className={({ isActive }) => isActive ? "underline" : ""}>Create Groups</NavLink></li>
+      {user && <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/myGroups" className={({ isActive }) => isActive ? "underline" : ""}>My Groups</NavLink></li>}
     </>
   );
 
   return (
-    <div className={` transition-all duration-300 shadow-sm ${isDark ? "bg-white " : "bg-gray-900 text-white"}`}>
+    <div className={` transition-all duration-300 shadow-sm py-3 ${isDark ? "bg-black text-white" : "bg-white"}`}>
       <div className="navbar container mx-auto px-3 md:px-6 lg:px-8 xl:px-14 text-black dark:text-white">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div tabIndex={0} role="button" className={`btn btn-ghost lg:hidden ${isDark? "text-white": "text-black"}`}>
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> 
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> 
               </svg>
@@ -39,7 +39,7 @@ export const Navbar = () => {
               {links}
             </ul>
           </div>
-          <a className={`font-medium text-xl ${isDark ? "" : "text-white"}`}>HobMeet</a>
+          <a className={`font-medium text-xl ${isDark ? "text-white" : ""}`}>HobMeet</a>
         </div>
 
         <div className="navbar-center hidden lg:flex">
@@ -60,12 +60,12 @@ export const Navbar = () => {
           {/* User info & login/logout */}
           {user ? (
             <>
-              <img data-tooltip-id="my-tooltip" data-tooltip-content={user.displayName} className="w-8 h-8 rounded-full" src={user.photoURL || "https://i.ibb.co.com/0jKWX0cD/user-png-33832.png"} alt="user" />
+              <img data-tooltip-id="my-tooltip" data-tooltip-content={user.displayName} className="hidden md:block w-8 h-8 rounded-full" src={user.photoURL || "https://i.ibb.co.com/0jKWX0cD/user-png-33832.png"} alt="user" />
               <Tooltip className="z-10" id="my-tooltip" />
-              <Link onClick={handleLogout} className="btn btn-sm">Logout</Link>
+              <Link onClick={handleLogout} className="btn border-none  bg-amber-300 hover:bg-amber-400  ">Logout</Link>
             </>
           ) : (
-            <Link to="/login" className="btn btn-sm">Login</Link>
+            <Link to="/login" className="btn border-none  bg-amber-300 hover:bg-amber-400">Login</Link>
           )}
         </div>
       </div>

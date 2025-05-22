@@ -6,6 +6,7 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { useNavigate } from "react-router";
 
 const slides = [
   {
@@ -29,6 +30,7 @@ const slides = [
 ];
 
 export const Banner = () => {
+  const navigate = useNavigate()
   return (
     <div className="z-0 container mx-auto px-3 md:px-6 lg:px-8 xl:px-14 w-full">
       <Swiper
@@ -46,8 +48,9 @@ export const Banner = () => {
               style={{ backgroundImage: `url(${slide.image})` }}
             >
               <div className="bg-black/50 p-8 rounded-xl">
-                <h2 className="text-3xl md:text-5xl font-bold mb-4">{slide.title}</h2>
+                <h2 className="text-2xl md:text-4xl font-semibold mb-4">{slide.title}</h2>
                 <p className="text-lg md:text-xl">{slide.description}</p>
+                <button onClick={()=> navigate("/allgroup")} className="btn border-none  bg-amber-300 hover:bg-amber-400 mt-3">Expolre More</button>
               </div>
             </div>
           </SwiperSlide>

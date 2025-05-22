@@ -1,4 +1,5 @@
 import { Banner } from "../../components/Banner/Banner"
+import { Counter } from "../../components/Counter/Counter"
 import { FeaturedGroup } from "../../components/FeaturedGroup/FeaturedGroup"
 
 export const Home = ()=>{
@@ -9,6 +10,9 @@ export const Home = ()=>{
          </section>
          <section>
             <FeaturedGroup/>
+         </section>
+         <section>
+            <Counter/>
          </section>
         </>
     )
