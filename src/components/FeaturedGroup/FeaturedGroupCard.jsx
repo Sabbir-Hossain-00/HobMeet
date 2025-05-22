@@ -17,9 +17,9 @@ export const FeaturedGroupCard = ({group})=>{
              </figure>
              <div className="card-body">
                <h2 className="card-title">{group.groupName}</h2>
-               <p >{group.description}</p>
-               <p>{group.date}</p>
-               <div className="card-actions ">
+               <p><strong>Members :</strong> {group.members}</p>
+               <p><strong>Description :</strong> {group.description}</p>
+               <div className="card-actions mt-3">
                  <Link to={`/group/${group._id}`} className="btn w-full border-none  bg-amber-300 hover:bg-amber-400  ">Details</Link>
                </div>
              </div>

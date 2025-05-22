@@ -85,7 +85,7 @@ export const MyGroups = ()=>{
                   groupData?.map((signleData)=>{
                     return <tr className="border border-gray-200 text-center" key={signleData._id}>
                               <td className="border border-gray-200">
-                                <div className="flex items-center justify-center gap-3">
+                                <div className="flex items-center  gap-3">
                                   <div className="avatar">
                                     <div className="mask mask-squircle h-12 w-12">
                                       <img
@@ -93,7 +93,7 @@ export const MyGroups = ()=>{
                                         alt="Avatar Tailwind CSS Component" />
                                     </div>
                                   </div>
-                                  <div>
+                                  <div className="flex flex-col items-start">
                                     <div className="font-bold">{signleData.userName}</div>
                                     <div className="text-sm opacity-50">{signleData.location}</div>
                                   </div>

@@ -23,7 +23,7 @@ export const CreateGroups = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          swal("Group Created Successfully!");
+          swal("Good job!", "Group Created Successfully!", "success");
           navigate("/allGroups");
         }
       });

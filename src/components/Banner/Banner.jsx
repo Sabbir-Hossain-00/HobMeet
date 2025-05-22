@@ -13,19 +13,19 @@ const slides = [
     id: 1,
     title: "Welcome to Our Community",
     description: "Join groups based on your hobbies and meet like-minded people.",
-    image: "https://i.ibb.co/pBCwQ7pG/image.png",
+    image: "https://i.ibb.co/Zpnm4trT/12431.jpg",
   },
   {
     id: 2,
     title: "Discover New Hobbies",
     description: "Explore a variety of interests and grow your skills.",
-    image: "https://i.ibb.co/w9vGR5w/image.png",
+    image: "https://i.ibb.co/q3gZ1htb/bridge-sea-middle-mountains.jpg",
   },
   {
     id: 3,
     title: "Make New Friends",
     description: "Connect with people near you and build lasting friendships.",
-    image: "https://i.ibb.co/fVktGtgP/image.png",
+    image: "https://i.ibb.co/278nvsnm/spooky-scene-with-old-house.jpg",
   },
 ];
 
@@ -44,7 +44,7 @@ export const Banner = () => {
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <div
-              className="h-[300px] md:h-[500px] xl:h-[700px] bg-cover bg-center flex items-center justify-center text-white text-center px-4"
+              className=" mt-12 h-[300px] md:h-[500px] xl:h-[700px] bg-cover bg-center flex items-center justify-center text-white text-center px-4"
               style={{
                 backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.85)), url(${slide.image})`,
               }}
