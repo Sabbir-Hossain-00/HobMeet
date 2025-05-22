@@ -20,7 +20,7 @@ export const router = createBrowserRouter([
             {
                 path: "/",
                 loader:()=> fetch("https://hobmeet-server.vercel.app/ongoingGroups"),
-                element : <Home/>
+                element : <Home/>,
             },
             {
                 path : "/allGroups",

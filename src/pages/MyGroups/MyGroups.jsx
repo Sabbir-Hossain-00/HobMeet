@@ -1,6 +1,7 @@
 import { use, useEffect, useState } from "react";
 import { useNavigate } from "react-router"
 import { AuthContext } from "../../context/AuthContext";
+import { MyGroupsEmpty } from "./MyGroupsEmpty";
 
 
 export const MyGroups = ()=>{
@@ -51,6 +52,10 @@ export const MyGroups = ()=>{
   });
 };
 
+   
+    if(groupData.length === 0){
+      return <MyGroupsEmpty/>
+   }
 
     return(
         <section className="py-20 container mx-auto px-3 md:px-6 lg:px-8 xl:px-14">
