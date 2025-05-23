@@ -33,7 +33,7 @@ export const GroupDetails = () => {
           <img
             src={groupDetails.photo}
             alt="Group"
-            className="rounded-xl w-full xl:h-[320px] md:h-[350px] h-[320px] object-cover"
+            className="rounded-xl w-full xl:h-[320px] md:h-[350px] h-[200px] object-cover"
           />
         </figure>
 
@@ -53,7 +53,7 @@ export const GroupDetails = () => {
               className="bg-amber-400 border-none hover:bg-amber-500 text-white font-medium px-4 py-2 rounded btn"
             >
               Join Now
-            </button> : <p className="bg-red-100 px-4 py-2 rounded-4xl w-fit flex gap-2 items-center text-red-700"><CircleAlert size={16} /> The group is no longer active</p>
+            </button> : <p className="bg-red-100  px-4 py-2 rounded-4xl md:w-fit flex gap-2 items-center text-red-700"><CircleAlert size={16} /> The group is no longer active</p>
             }
           </div>
         </div>

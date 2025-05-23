@@ -104,13 +104,13 @@ export const Banner = () => {
             <div className="hero-overlay"></div>
             <div className="text-white ">
               <div className="w-full  flex flex-col justify-center items-center">
-                <h1 className="text-center md:mb-2 w-full md:w-full text-lg md:text-3xl font-bold">
+                <h1 className="text-center md:mb-2 w-full md:w-full text-xl md:text-4xl font-bold">
                   Welcome to Our <span className="text-amber-400">Community</span>
                 </h1>
                 <p className="text-center text-xs md:text-sm mb-2">
                   Join groups based on your hobbies and meet like-minded people.
                 </p>
-                <button onClick={()=>navigate("/allgroups")} className="btn border-none  bg-amber-300 hover:bg-amber-400">
+                <button onClick={()=>navigate("/allgroups")} className="btn btn-sm border-none  bg-amber-300 hover:bg-amber-400">
                   Explore More
                 </button>
               </div>
@@ -129,13 +129,13 @@ export const Banner = () => {
             <div className="hero-overlay"></div>
             <div className="text-white">
               <div className="w-full  flex flex-col justify-center items-center">
-                <h1 className="text-center md:mb-2 w-full md:w-full text-lg md:text-3xl font-bold">
+                <h1 className="text-center md:mb-2 w-full md:w-full text-xl md:text-4xl font-bold">
                  Discover New <span className="text-amber-400">Hobbies</span>
                 </h1>
                 <p className="text-center text-xs md:text-sm mb-2">
                   Explore a variety of interests and grow your skills.
                 </p>
-                <button onClick={()=>navigate("/allgroups")} className="btn border-none  bg-amber-300 hover:bg-amber-400">
+                <button onClick={()=>navigate("/allgroups")} className="btn btn-sm border-none  bg-amber-300 hover:bg-amber-400">
                   Explore More
                 </button>
               </div>
@@ -154,13 +154,13 @@ export const Banner = () => {
             <div className="hero-overlay"></div>
             <div className="text-white">
               <div className="w-full  flex flex-col justify-center items-center">
-                <h1 className="text-center md:mb-2 w-full md:w-full text-lg md:text-3xl font-bold">
+                <h1 className="text-center md:mb-2 w-full md:w-full text-xl md:text-4xl font-bold">
                   Make New <span className="text-amber-400">Friends</span>
                 </h1>
                 <p className="text-center text-xs md:text-sm mb-2">
                   Connect with people near you and build lasting friendships.
                 </p>
-                <button onClick={()=>navigate("/allgroups")} className="btn border-none  bg-amber-300 hover:bg-amber-400">
+                <button onClick={()=>navigate("/allgroups")} className="btn btn-sm border-none  bg-amber-300 hover:bg-amber-400">
                   Explore More
                 </button>
               </div>
