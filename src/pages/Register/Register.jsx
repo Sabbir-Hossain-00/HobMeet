@@ -7,7 +7,7 @@ import { Eye, EyeOff } from "lucide-react";
 
 export const Register = ()=>{
 
-    const {createUser , updateUser } = use(AuthContext);
+    const {createUser , updateUser, isDark } = use(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
     const [errorMessage , setErrorMessage] = useState(false);
@@ -65,24 +65,24 @@ export const Register = ()=>{
 
     return(
         <section className=" min-h-screen  flex justify-center items-center py-10 container mx-auto px-3 md:px-6 lg:px-8 xl:px-14">
-          <div className="card bg-base-100 mx-auto  w-full max-w-sm shrink-0 shadow-2xl">
-            <div className="card-body text-black">
+          <div className="card backdrop-blur-md bg-white/30 border border-white/20 rounded-xl mx-auto w-full max-w-sm shrink-0 shadow-2xl">
+            <div className={` card-body  ${isDark? "text-white":"text-black"}`}>
                 <h1 className=" text-3xl font-medium text-center mt-4">Register Now</h1>
                 <form onSubmit={handleRegister} className="fieldset">
 
-                    <label className="label">Name</label>
-                    <input type="text" name="name" required className="input" placeholder="Name" />
+                    <label className={`label ${isDark? "text-white":"text-black"}`}>Name</label>
+                    <input type="text" name="name" required className={`input ${isDark? "text-black":""}`} placeholder="Name" />
 
-                    <label className="label">Photo</label>
-                    <input type="text" name="photo" className="input" placeholder="Photo URL" />
+                    <label className={`label ${isDark? "text-white":"text-black"}`}>Photo</label>
+                    <input type="text" name="photo" className={`input ${isDark? "text-black":""}`} placeholder="Photo URL" />
 
 
-                    <label className="label">Email</label>
-                    <input type="email" name="email" required className="input" placeholder="Email" />
+                    <label className={`label ${isDark? "text-white":"text-black"}`}>Email</label>
+                    <input type="email" name="email" required className={`input ${isDark? "text-black":""}`} placeholder="Email" />
 
-                    <label className="label">Password</label>
+                    <label className={`label ${isDark? "text-white":"text-black"}`}>Password</label>
                     <div className="relative">
-                        <input type={`${isShow ? "text" : "password"}`} name="password" className="input" placeholder="Password" />
+                        <input type={`${isShow ? "text" : "password"}`} name="password" className={`input ${isDark? "text-black":""}`} placeholder="Password" />
                         <div onClick={()=>setIsShow(!isShow)} className=" absolute top-2 right-7">
                             {
                                 isShow ? <EyeOff /> : <Eye/>
@@ -93,7 +93,7 @@ export const Register = ()=>{
 
                     <button className="btn btn-neutral mt-4">Register</button>
                 </form>
-                <p>Already Have An Account ? <Link className="text-blue-950 font-medium" to="/login">Login</Link> </p>
+                <p>Already Have An Account ? <Link className="text-amber-400 font-medium" to="/login">Login</Link> </p>
                 <div>
                     {errorMessage && <p className="text-rose-600 font-medium text-sm text-center">Email already in use. Try another or Login</p>}
                 </div>

@@ -6,7 +6,7 @@ export const Error = ()=>{
         <>
            <div className="flex flex-col justify-center items-center">
               <img src="https://i.ibb.co/7xPt3K3D/404.gif" alt="" />
-              <button onClick={()=> navigate("/")} className="btn">Go Back To Home</button>
+              <button onClick={()=> navigate("/")} className="btn bg-amber-400 border-none hover:bg-amber-500">Go Back To Home</button>
            </div>
         </>
     )

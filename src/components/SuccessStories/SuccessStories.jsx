@@ -8,8 +8,8 @@ export const SuccessStories = () => {
       <div className={` md:py-20 md:px-10 p-2 ${isDark ? "bg-gradient-to-b from-black rounded-2xl to-gray-900]": "bg-gradient-to-b from-amber-50 to-slate-100"}`}>
         {/* Section Title */}
         <div className="text-center mb-12">
-          <h2 className={`text-3xl md:text-4xl font-bold  mb-2 ${isDark? "text-gray-100" : "text-gray-800"}`} >
-            From Passion to Connection
+          <h2 className={`text-3xl md:text-4xl font-semibold  mb-2 ${isDark? "text-gray-100" : "text-gray-800"}`} >
+            From Passion to <span className="text-amber-400">Connection</span>
           </h2>
           <p className={`${isDark? "text-gray-200":"text-gray-600"}`}>
             Real people. Real stories. Discover how HobMeet is helping hobbyists connect and grow.

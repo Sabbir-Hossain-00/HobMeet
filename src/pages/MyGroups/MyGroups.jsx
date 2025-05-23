@@ -65,8 +65,8 @@ export const MyGroups = ()=>{
    }
 
     return(
-        <section className="min-h-screen py-20 container mx-auto px-3 md:px-6 lg:px-8 xl:px-14">
-          <h1 className="text-center text-2xl md:text-4xl mb-2 font-medium">Your Hobby Hub</h1>
+        <section className="mt-10 min-h-screen py-20 container mx-auto px-3 md:px-6 lg:px-8 xl:px-14">
+          <h1 className="text-center text-2xl md:text-4xl mb-2 font-medium">Your Hobby <span className="text-amber-400">Hub</span></h1>
           <p className="text-center mb-10 ">Manage all the hobby groups you've created in one place. Update details, remove groups, <br /> or explore your communities—right from your dashboard.</p>
           <div className=" overflow-x-auto">
             <table className="table w-full">
@@ -75,6 +75,7 @@ export const MyGroups = ()=>{
                 <tr className={`border border-gray-200 text-center ${isDark ? "text-white" :"text-gray-700"}`}>
                   <th className="border border-gray-200">Name</th>
                   <th className="border border-gray-200">Group Name</th>
+                  <th className="border border-gray-200">Max Member</th>
                   <th className="border border-gray-200">Category</th>
                   <th className="border border-gray-200">Update</th>
                   <th className="border border-gray-200">Delete</th>
@@ -93,20 +94,20 @@ export const MyGroups = ()=>{
                                         alt="Avatar Tailwind CSS Component" />
                                     </div>
                                   </div>
-                                  <div className="flex flex-col items-start">
+                                  <div className="flex flex-col min-w-fit pr-2 items-start">
                                     <div className="font-bold">{signleData.userName}</div>
                                     <div className="text-sm opacity-50">{signleData.location}</div>
                                   </div>
                                 </div>
                               </td>
                               <td className="border border-gray-200">{signleData.groupName}</td>
+                              <td className="border border-gray-200">{signleData.members}</td>
                               <td className="border border-gray-200">{signleData.hobbyCategory}</td>
                               <td className="border border-gray-200">
                                 <button onClick={()=>navigate(`/updategroup/${signleData._id}`)} className="btn border-none  bg-amber-300 hover:bg-amber-400  ">Update</button>
                               </td>
                               <td className="border border-gray-200">
-                                <button onClick={()=>handleDeleteGroup(signleData._id)} className="btn border-none bg-rose-500 hover:bg-rose-600 text-white
-">Delete</button>
+                                <button onClick={()=>handleDeleteGroup(signleData._id)} className="btn border-none bg-rose-500 hover:bg-rose-600 text-white">Delete</button>
                               </td>
                             </tr>
                   })

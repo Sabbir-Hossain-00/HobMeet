@@ -9,7 +9,7 @@ export const Footer = ()=>{
         <section className={`py-20 ${isDark ? "bg-black":"bg-white"}`}>
             <footer className={`flex flex-col justify-center items-center gap-3 ${isDark ? "text-white" : "text-black"}`}>
               <nav>
-                <h1 className=" text-2xl font-medium ">HobMeet</h1>
+                <h1 className=" text-2xl font-medium "><span className="text-amber-400">Hob</span>Meet</h1>
               </nav>
               <ul className=" flex md:flex-row flex-col justify-center items-center gap-5 text-gray-300">
                   <li className={`${isDark ? "text-white" : "text-black"}`}><NavLink to="/" className={({ isActive }) => isActive ? "text-amber-400 font-medium" : "font-medium"}>Home</NavLink></li>
@@ -23,16 +23,16 @@ export const Footer = ()=>{
               <div>
                 <div className="grid grid-flow-col gap-4">
                   <a target="blank" href="https://www.facebook.com/jrsabbir00">
-                   <FacebookIcon className={` hover:text-rose-700 transition duration-500 text-2xl cursor-pointer ${isDark ? "text-white" : "text-black"}`}/>
+                   <FacebookIcon className={` hover:text-amber-400 transition duration-500 text-2xl cursor-pointer ${isDark ? "text-white" : "text-black"}`}/>
                   </a>
                   <a target="blank" href="https://www.instagram.com/dhali_sabbir_hossain/">
-                     <Instagram className={` hover:text-rose-700 transition duration-500 text-2xl cursor-pointer ${isDark ? "text-white" : "text-black"}`}/>
+                     <Instagram className={` hover:text-amber-400 transition duration-500 text-2xl cursor-pointer ${isDark ? "text-white" : "text-black"}`}/>
                   </a>
                   <a target="blank" href="https://x.com/ms7398037">
-                    <Twitter className={` hover:text-rose-700 transition duration-500 text-2xl cursor-pointer ${isDark ? "text-white" : "text-black"}`}/>
+                    <Twitter className={` hover:text-amber-400 transition duration-500 text-2xl cursor-pointer ${isDark ? "text-white" : "text-black"}`}/>
                   </a>
                   <a target="blank" href="https://github.com/Sabbir-Hossain-00">
-                    <Github className={` hover:text-rose-700 transition duration-500 text-2xl cursor-pointer ${isDark ? "text-white" : "text-black"}`}/>
+                    <Github className={` hover:text-amber-400 transition duration-500 text-2xl cursor-pointer ${isDark ? "text-white" : "text-black"}`}/>
                   </a>
                 </div>
               </div>

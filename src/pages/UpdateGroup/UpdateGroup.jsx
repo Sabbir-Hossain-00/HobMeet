@@ -41,10 +41,10 @@ export const UpdateGroup = () => {
           : "bg-gradient-to-br from-purple-200 via-blue-100 to-blue-200"
       }
     >
-      <div className="min-h-screen container mx-auto px-3 md:px-6 lg:px-8 xl:px-14 p-4">
+      <div className="mt-22 min-h-screen container mx-auto px-3 md:px-6 lg:px-8 xl:px-14 p-4">
         <button
           onClick={() => navigate(-1)}
-          className="btn btn-sm border-none bg-rose-700 text-white"
+          className="btn btn-sm bg-amber-400 border-none hover:bg-amber-500"
         >
           Go Back
         </button>
