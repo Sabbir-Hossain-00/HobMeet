@@ -22,9 +22,8 @@ export const Navbar = () => {
       <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/allGroups" className={({ isActive }) => isActive ? "text-amber-400 font-medium" : "font-medium"}>All Groups</NavLink></li>
       <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/createGroups" className={({ isActive }) => isActive ? "text-amber-400 font-medium" : "font-medium"}>Create Groups</NavLink></li>
       {user && <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/myGroups" className={({ isActive }) => isActive ? "text-amber-400 font-medium" : "font-medium"}>My Groups</NavLink></li>}
+      {user && <Link onClick={handleLogout} className="btn md:hidden btn-xs w-fit ml-2 mt-1 border-none  bg-amber-300 hover:bg-amber-400  ">Logout</Link>}
       
-        <img data-tooltip-id="my-tooltip" data-tooltip-content={user.displayName} className="md:hidden block object-cover ml-2.5 mt-1 w-6 h-6 rounded-full" src={user.photoURL || "https://i.ibb.co.com/0jKWX0cD/user-png-33832.png"} alt="user" />
-        <Tooltip className="z-10" id="my-tooltip" />
       
     </>
   );
@@ -76,9 +75,9 @@ export const Navbar = () => {
           {/* User info & login/logout */}
           {user ? (
             <>
-              <img data-tooltip-id="my-tooltip" data-tooltip-content={user.displayName} className="hidden md:block w-8 h-8 rounded-full" src={user.photoURL || "https://i.ibb.co.com/0jKWX0cD/user-png-33832.png"} alt="user" />
+              <img data-tooltip-id="my-tooltip" data-tooltip-content={user.displayName} className=" bg-gradient-to-r from-rose-500 via-orange-500 to-amber-400 p-0.5 w-8 h-8 rounded-full" src={user.photoURL || "https://i.ibb.co.com/0jKWX0cD/user-png-33832.png"} alt="user" />
               <Tooltip className="z-10" id="my-tooltip" />
-              <Link onClick={handleLogout} className="btn btn-sm md:btn-md border-none  bg-amber-300 hover:bg-amber-400  ">Logout</Link>
+              <Link onClick={handleLogout} className="btn btn-sm hidden md:flex md:btn-md border-none  bg-amber-300 hover:bg-amber-400  ">Logout</Link>
             </>
           ) : (
             <Link to="/login" className="btn btn-sm md:btn-md  border-none  bg-amber-300 hover:bg-amber-400">Login</Link>
