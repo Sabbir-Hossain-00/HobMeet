@@ -1,8 +1,15 @@
 import { useLoaderData } from "react-router";
 import { GroupCard } from "../../components/GroupCards/GroupCard";
+import { useEffect } from "react";
 
 export const AllGroups = ()=>{
   const groupData = useLoaderData();
+  useEffect(() => {
+      document.title = "All-Group - HobMeet";
+      return () => {
+        document.title = "HobMeet"; // reset on unmount
+      };
+    }, []);
     return(
         <section className="mt-20 py-20 container mx-auto px-3 md:px-6 lg:px-8 xl:px-14">
           <h1 className=" text-2xl md:text-4xl text-center mb-3 font-medium">Find Your <span className="text-amber-400">Hobby</span> Tribe</h1>

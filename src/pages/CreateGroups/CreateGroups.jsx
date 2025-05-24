@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router";
 import swal from "sweetalert";
@@ -28,6 +28,13 @@ export const CreateGroups = () => {
         }
       });
   };
+
+  useEffect(() => {
+      document.title = "Create Group - HobMeet";
+      return () => {
+        document.title = "HobMeet"; // reset on unmount
+      };
+    }, []);
 
   return (
     <div

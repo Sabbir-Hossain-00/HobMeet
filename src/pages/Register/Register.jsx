@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router"
 import { AuthContext } from "../../context/AuthContext";
 import swal from 'sweetalert';
@@ -61,6 +61,12 @@ export const Register = ()=>{
 
     }
 
+    useEffect(() => {
+        document.title = "Register - HobMeet";
+        return () => {
+          document.title = "HobMeet"; // reset on unmount
+        };
+      }, []);
     
 
     return(

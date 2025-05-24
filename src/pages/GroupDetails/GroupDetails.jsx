@@ -22,6 +22,13 @@ export const GroupDetails = () => {
      swal("Success!", "You joined the group successfully!", "success");
   };
 
+  useEffect(() => {
+    document.title = "Group Details - HobMeet";
+    return () => {
+      document.title = "HobMeet"; // reset on unmount
+    };
+  }, []);
+
   return (
     <section className="mt-20 min-h-screen  py-10 container mx-auto px-3 md:px-6 lg:px-8 xl:px-14">
 

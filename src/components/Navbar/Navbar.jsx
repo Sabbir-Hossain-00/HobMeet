@@ -22,15 +22,19 @@ export const Navbar = () => {
       <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/allGroups" className={({ isActive }) => isActive ? "text-amber-400 font-medium" : "font-medium"}>All Groups</NavLink></li>
       <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/createGroups" className={({ isActive }) => isActive ? "text-amber-400 font-medium" : "font-medium"}>Create Groups</NavLink></li>
       {user && <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/myGroups" className={({ isActive }) => isActive ? "text-amber-400 font-medium" : "font-medium"}>My Groups</NavLink></li>}
+      
+        <img data-tooltip-id="my-tooltip" data-tooltip-content={user.displayName} className="md:hidden block object-cover ml-2.5 mt-1 w-6 h-6 rounded-full" src={user.photoURL || "https://i.ibb.co.com/0jKWX0cD/user-png-33832.png"} alt="user" />
+        <Tooltip className="z-10" id="my-tooltip" />
+      
     </>
   );
 
   return (
-    <div className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 shadow-sm py-3 ${isDark ? "bg-black text-white" : "bg-white"}`}>
+    <div className={`fixed top-0 left-0 w-full z-50  transition-all duration-300 shadow-sm py-3 ${isDark ? "bg-black text-white" : "bg-white"}`}>
       <div className=" navbar container mx-auto px-3 md:px-6 lg:px-8 xl:px-14 text-black dark:text-white">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className={`btn btn-ghost lg:hidden ${isDark? "text-white": "text-black"}`}>
+            <div tabIndex={0} role="button" className={`btn btn-xs px-0 btn-ghost lg:hidden ${isDark? "text-white": "text-black"}`}>
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> 
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> 
               </svg>
@@ -39,7 +43,10 @@ export const Navbar = () => {
               {links}
             </ul>
           </div>
-          <a className={`font-medium md:text-2xl text-lg ${isDark ? "text-white" : ""}`}><span className="text-amber-400">Hob</span>Meet</a>
+          <div className="flex items-center">
+            <img className="w-12 mt-1" src="https://i.ibb.co/8n9LRt74/Chat-GPT-Image-May-24-2025-11-58-34-AM-removebg-preview.png" alt="" />
+            <a className={`font-medium md:text-2xl text-lg hidden md:block ${isDark ? "text-white" : ""}`}>Hob<span className="text-amber-400">Meet</span></a>
+          </div>
         </div>
 
         <div className="navbar-center hidden lg:flex">

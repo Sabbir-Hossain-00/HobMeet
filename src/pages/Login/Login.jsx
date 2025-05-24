@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router"
 import { AuthContext } from "../../context/AuthContext";
 import { Eye, EyeOff } from "lucide-react";
@@ -38,6 +38,12 @@ export const Login = ()=>{
         }).catch(erroe => console.log(erroe.message))
     }
 
+    useEffect(() => {
+        document.title = "Login - HobMeet";
+        return () => {
+          document.title = "HobMeet"; // reset on unmount
+        };
+      }, []);
 
     return(
         <section className=" min-h-screen  flex justify-center items-center py-10 container mx-auto px-3 md:px-6 lg:px-8 xl:px-14">

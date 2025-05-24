@@ -56,6 +56,13 @@ export const MyGroups = ()=>{
   });
 };
 
+   useEffect(() => {
+    document.title = "My-Group - HobMeet";
+    return () => {
+      document.title = "HobMeet"; // reset on unmount
+    };
+  }, []);
+
     if(isLoading){
       return <Loader/>
     }

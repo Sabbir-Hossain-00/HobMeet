@@ -1,5 +1,5 @@
 import { useLoaderData, useNavigate } from "react-router";
-import { use } from "react";
+import { use, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 export const UpdateGroup = () => {
@@ -32,6 +32,13 @@ export const UpdateGroup = () => {
         }
       });
   };
+
+  useEffect(() => {
+      document.title = "Update-Group - HobMeet";
+      return () => {
+        document.title = "HobMeet"; // reset on unmount
+      };
+    }, []);
 
   return (
     <section
