@@ -1,0 +1,111 @@
+import { use, useState } from "react";
+import { GrLogout } from "react-icons/gr";
+import { AiOutlineBars } from "react-icons/ai";
+import { AuthContext } from "../../context/AuthContext";
+import MenuItem from "../MenuItem/MenuItem";
+import { FaUserPlus } from 'react-icons/fa';
+import { FaUsers } from 'react-icons/fa';
+import { HobmeetLogo } from "../HobmetLogo/HobmeetLogo";
+import { FaUserGroup } from "react-icons/fa6";
+import { AiFillHome } from "react-icons/ai";
+import { NavLink } from "react-router";
+export const Sidebar = () => {
+  const [isActive, setActive] = useState(false);
+  const { user, logOut } = use(AuthContext);
+
+  // Sidebar Responsive Handler
+  const handleToggle = () => {
+    setActive(!isActive);
+  };
+  return (
+    <>
+      {/* Small Screen Navbar */}
+      <div className="bg-gray-100 text-gray-800 flex justify-between md:hidden">
+        <div>
+          <div className="block cursor-pointer p-4 font-bold">
+            <HobmeetLogo />
+          </div>
+        </div>
+
+        <button
+          onClick={handleToggle}
+          className="mobile-menu-button p-4 focus:outline-none focus:bg-gray-200"
+        >
+          <AiOutlineBars className="h-5 w-5" />
+        </button>
+      </div>
+
+      {/* Sidebar */}
+      <div
+        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-gray-100 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
+          isActive && "-translate-x-full"
+        }  md:translate-x-0  transition duration-200 ease-in-out`}
+      >
+        <div>
+          <div>
+            <div className="w-full cursor-pointer hidden md:flex px-4 py-2  rounded-lg justify-center items-center mx-auto">
+              <HobmeetLogo />
+            </div>
+          </div>
+
+          {/* Nav Items */}
+          <div className="flex flex-col justify-between flex-1 mt-10">
+            <nav className="flex flex-col gap-1">
+              <NavLink
+                to="profile"
+                className={({ isActive }) =>
+                  `flex items-center px-4 py-2 my-2  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
+                    isActive ? "bg-gray-300  text-gray-700" : "text-gray-600"
+                  }`
+                }
+              >
+                <img
+                  className=" bg-gradient-to-r from-rose-500 via-orange-500 to-amber-400 p-0.5 w-8 h-8 rounded-full"
+                  src={
+                    user.photoURL ||
+                    "https://i.ibb.co.com/0jKWX0cD/user-png-33832.png"
+                  }
+                  alt="user"
+                /> 
+                <p className="mx-4 font-medium">{user?.displayName}</p>
+              </NavLink>
+              <MenuItem
+                icon={AiFillHome}
+                label="Home"
+                address="home"
+              />
+              <MenuItem
+                icon={FaUserGroup}
+                label="All Groups"
+                address="allGroups"
+              />
+              <MenuItem
+                icon={FaUserPlus}
+                label="Create Groups"
+                address="createGroups"
+              />
+              <MenuItem
+                icon={FaUsers}
+                label="My Groups"
+                address="myGroups"
+              />
+            </nav>
+          </div>
+        </div>
+
+        <div>
+          <hr />
+
+          <button
+            onClick={logOut}
+            className="flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform"
+          >
+            <GrLogout className="w-5 h-5" />
+
+            <span className="mx-4 font-medium">Logout</span>
+          </button>
+        </div>
+      </div>
+    </>
+  );
+};

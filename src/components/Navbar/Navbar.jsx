@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import { Tooltip } from 'react-tooltip';
 import { Moon, Sun } from "lucide-react";
+import { HobmeetLogo } from "../HobmetLogo/HobmeetLogo";
 
 export const Navbar = () => {
   const { user, logOut , isDark , setIsDark } = useContext(AuthContext);
@@ -19,10 +20,12 @@ export const Navbar = () => {
   const links = (
     <>
       <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/" className={({ isActive }) => isActive ? "text-amber-400 font-medium" : "font-medium"}>Home</NavLink></li>
-      <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/allGroups" className={({ isActive }) => isActive ? "text-amber-400 font-medium" : "font-medium"}>All Groups</NavLink></li>
-      <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/createGroups" className={({ isActive }) => isActive ? "text-amber-400 font-medium" : "font-medium"}>Create Groups</NavLink></li>
-      {user && <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/myGroups" className={({ isActive }) => isActive ? "text-amber-400 font-medium" : "font-medium"}>My Groups</NavLink></li>}
+      <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/about" className={({ isActive }) => isActive ? "text-amber-400 font-medium" : "font-medium"}>About Us</NavLink></li>
+      <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/contact" className={({ isActive }) => isActive ? "text-amber-400 font-medium" : "font-medium"}>Contact</NavLink></li>
       {user && <Link onClick={handleLogout} className="btn md:hidden btn-xs w-fit ml-2 mt-1 border-none  bg-amber-300 hover:bg-amber-400  ">Logout</Link>}
+      {
+        user &&  <Link to="/dashboard" className="btn btn-sm md:hidden w-fit mt-3 ml-2 md:btn-md border-none  bg-amber-300 hover:bg-amber-400  ">Dashboard</Link>
+      }
       
       
     </>
@@ -42,10 +45,7 @@ export const Navbar = () => {
               {links}
             </ul>
           </div>
-          <div className="flex items-center">
-            <img className="w-12 mt-1" src="https://i.ibb.co/8n9LRt74/Chat-GPT-Image-May-24-2025-11-58-34-AM-removebg-preview.png" alt="" />
-            <a className={`font-medium md:text-2xl text-lg hidden md:block ${isDark ? "text-white" : ""}`}>Hob<span className="text-amber-400">Meet</span></a>
-          </div>
+          <HobmeetLogo/>
         </div>
 
         <div className="navbar-center hidden lg:flex">
@@ -75,8 +75,8 @@ export const Navbar = () => {
           {/* User info & login/logout */}
           {user ? (
             <>
-              <img data-tooltip-id="my-tooltip" data-tooltip-content={user.displayName} className=" bg-gradient-to-r from-rose-500 via-orange-500 to-amber-400 p-0.5 w-8 h-8 rounded-full" src={user.photoURL || "https://i.ibb.co.com/0jKWX0cD/user-png-33832.png"} alt="user" />
-              <Tooltip className="z-10" id="my-tooltip" />
+              
+              <Link to="/dashboard" className="btn btn-sm hidden md:flex md:btn-md border-none  bg-amber-300 hover:bg-amber-400  ">Dashboard</Link>
               <Link onClick={handleLogout} className="btn btn-sm hidden md:flex md:btn-md border-none  bg-amber-300 hover:bg-amber-400  ">Logout</Link>
             </>
           ) : (

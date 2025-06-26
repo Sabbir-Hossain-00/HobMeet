@@ -10,6 +10,11 @@ import { PrivateRoute } from "./PrivateRoute";
 import { GroupDetails } from "../pages/GroupDetails/GroupDetails";
 import { UpdateGroup } from "../pages/UpdateGroup/UpdateGroup";
 import { Error } from "../pages/Error/Error";
+import { DashboardLayout } from "../layouts/DashboardLayout";
+import { AboutUs } from "../pages/AboutUs/AboutUs";
+import { ContactUs } from "../pages/ContactUs/ContactUs";
+import { DashboardHome } from "../pages/DashboardHome/DashboardHome";
+import { Profile } from "../pages/Profile/Profile";
 
 export const router = createBrowserRouter([
     {
@@ -23,18 +28,26 @@ export const router = createBrowserRouter([
                 element : <Home/>,
             },
             {
-                path : "/allGroups",
-                loader: ()=> fetch("https://hobmeet-server.vercel.app/groups"),
-                element: <AllGroups/>
+                path:"/about",
+                element:<AboutUs/>
             },
             {
-                path : "/createGroups",
-                element: <PrivateRoute><CreateGroups/></PrivateRoute>
+                path:"contact",
+                element:<ContactUs/>
             },
-            {
-                path : "/myGroups",
-                element : <PrivateRoute><MyGroups/></PrivateRoute>
-            },
+            // {
+            //     path : "/allGroups",
+            //     loader: ()=> fetch("https://hobmeet-server.vercel.app/groups"),
+            //     element: <AllGroups/>
+            // },
+            // {
+            //     path : "/createGroups",
+            //     element: <PrivateRoute><CreateGroups/></PrivateRoute>
+            // },
+            // {
+            //     path : "/myGroups",
+            //     element : <PrivateRoute><MyGroups/></PrivateRoute>
+            // },
             {
                 path: "/group/:id",
                 loader: ({params})=> fetch(`https://hobmeet-server.vercel.app/group/${params.id}`),
@@ -52,6 +65,33 @@ export const router = createBrowserRouter([
             {
                 path: "/register",
                 element: <Register/>
+            }
+        ]
+    },
+    {
+        path:"/dashboard",
+        element:<PrivateRoute><DashboardLayout/></PrivateRoute>,
+        children:[
+            {
+                path:"home",
+                element:<DashboardHome/>
+            },
+            {
+                path:"profile",
+                element:<Profile/>
+            },
+            {
+                path:"myGroups",
+                element:<MyGroups/>
+            },
+            {
+                path : "createGroups",
+                element: <PrivateRoute><CreateGroups/></PrivateRoute>
+            },
+            {
+                path : "allGroups",
+                loader: ()=> fetch("https://hobmeet-server.vercel.app/groups"),
+                element: <AllGroups/>
             }
         ]
     }
