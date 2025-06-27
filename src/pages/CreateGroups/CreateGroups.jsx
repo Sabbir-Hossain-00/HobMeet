@@ -38,9 +38,9 @@ export const CreateGroups = () => {
 
   return (
     <div
-      className={` rounded-xl py-10 min-h-screen flex items-center justify-center p-4 transition-all duration-500 ${
+      className={` py-10 min-h-screen flex items-center justify-center p-4 transition-all duration-500 ${
         isDark
-          ? "bg-gradient-to-br from-gray-900 via-purple-900 to-black text-gray-300"
+          ? "bg-gradient-to-br from-[#36065a] via-[#280146] to-black text-gray-300"
           : "bg-gradient-to-br from-purple-300 via-blue-200 to-blue-300 text-gray-800"
       }`}
     >

@@ -49,11 +49,11 @@ export const Login = () => {
 
   return (
     <section className=" min-h-screen flex justify-center items-center py-10 container mx-auto px-3 md:px-6 lg:px-8 xl:px-14">
-      <div className="  md:h-[600px] xl:h-[700px] w-full mt-20 bg-blue-50 shadow-2xl flex justify-center gap-20 items-center md:flex-row flex-col-reverse">
-        <div className="bg-white h-[100%] w-full md:flex-1/2 flex justify-center items-center">
-          <div className=" card backdrop-blur-md bg-white/30 border border-white/20 rounded-xl max-w-sm  w-full  shrink-0">
+      <div className={`md:h-[600px] xl:h-[700px] w-full mt-20 shadow-2xl flex justify-center gap-20 items-center md:flex-row flex-col-reverse ${isDark?"bg-gray-900":"bg-blue-50"}`}>
+        <div className={` h-[100%] w-full md:flex-1/2 flex justify-center items-center ${isDark ? " bg-black" : "bg-white"}`}>
+          <div className=" card border-none shadow-none backdrop-blur-md bg-white/30 border border-white/20 rounded-xl max-w-sm  w-full  shrink-0">
             <div
-              className={` card-body  ${isDark ? "text-white" : "text-black"}`}
+              className={` card-body shadow-none  ${isDark ? "text-white bg-black" : "text-black bg-white"}`}
             >
               <div className="mx-auto mb-6">
                 <HobmeetLogo />
@@ -93,11 +93,11 @@ export const Login = () => {
                   </div>
                 </div>
 
-                <button className="btn btn-neutral mt-4">Login</button>
+                <button className={`btn  mt-4 ${isDark ? "bg-white text-black":"bg-black text-white"}`}>Login</button>
               </form>
 
               <div className=" w-3/4 mx-auto">
-                <div className="divider">OR</div>
+                <div className={` divider divider-warning`}>OR</div>
               </div>
 
               <button

@@ -25,7 +25,7 @@ import { Loader } from "../Loader/Loader";
 import { AuthContext } from "../../context/AuthContext";
 
 export const DashboardHome = () => {
-  const { user } = use(AuthContext);
+  const { user , isDark } = use(AuthContext);
   const [myGroups, setMyGroups] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const ongoingGroups = useLoaderData();
@@ -124,18 +124,18 @@ export const DashboardHome = () => {
     },
   ];
   return (
-    <div className="min-h-screen bg-gray-50 rounded-xl px-4 md:px-10 py-10 space-y-16">
+    <div className="min-h-screen px-4 md:px-10 py-10 space-y-16">
       {/* Top Stat Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {topStats.map((stat, index) => (
           <div
             key={index}
-            className="bg-white rounded-xl shadow-md p-6 flex items-center gap-4 hover:shadow-lg transition duration-300"
+            className={`rounded-xl shadow-md p-6 flex items-center gap-4 hover:shadow-lg transition duration-300 ${isDark ? "bg-black": "bg-white"}`}
           >
-            <div className="bg-gray-100 p-3 rounded-full">{stat.icon}</div>
+            <div className={` p-3 rounded-full ${isDark ? "bg-gray-800": "bg-gray-100"}`}>{stat.icon}</div>
             <div>
-              <p className="text-sm text-gray-500">{stat.title}</p>
-              <h3 className="text-2xl font-bold text-gray-800">{stat.value}</h3>
+              <p className={`text-sm  ${isDark ? "text-gray-300": "text-gray-500"}`}>{stat.title}</p>
+              <h3 className="text-2xl font-bold ">{stat.value}</h3>
             </div>
           </div>
         ))}
@@ -144,8 +144,8 @@ export const DashboardHome = () => {
       {/* Two Charts Side by Side */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
         {/* Line Chart */}
-        <div className="bg-white p-6 rounded-xl shadow-md">
-          <h3 className="text-xl font-semibold mb-4 text-gray-800">
+        <div className={` p-6 rounded-xl shadow-md ${isDark ? "bg-black": "bg-white"}`}>
+          <h3 className="text-xl font-semibold mb-4 ">
             My Groups
           </h3>
           <ResponsiveContainer width="100%" height={250}>
@@ -165,8 +165,8 @@ export const DashboardHome = () => {
         </div>
 
         {/* Pie Chart */}
-        <div className="bg-white p-6 rounded-xl shadow-md">
-          <h3 className="text-xl font-semibold mb-4 text-gray-800">
+        <div className={` p-6 rounded-xl shadow-md ${isDark ? "bg-black": "bg-white"}`}>
+          <h3 className="text-xl font-semibold mb-4 ">
             Group Categories
           </h3>
           <ResponsiveContainer width="100%" height={250}>
@@ -196,20 +196,20 @@ export const DashboardHome = () => {
         {bottomStats.map((stat, index) => (
           <div
             key={index}
-            className="bg-white rounded-xl shadow-md p-6 flex items-center gap-4 hover:shadow-lg transition duration-300"
+            className={`rounded-xl shadow-md p-6 flex items-center gap-4 hover:shadow-lg transition duration-300 ${isDark ? "bg-black": "bg-white"}`}
           >
-            <div className="bg-gray-100 p-3 rounded-full">{stat.icon}</div>
+            <div className={` p-3 rounded-full ${isDark ? "bg-gray-800" : "bg-gray-100"}`}>{stat.icon}</div>
             <div>
-              <p className="text-sm text-gray-500">{stat.title}</p>
-              <h3 className="text-xl font-bold text-gray-800">{stat.value}</h3>
+              <p className={`text-sm  ${isDark ? "text-gray-300": "text-gray-500"}`}>{stat.title}</p>
+              <h3 className="text-xl font-bold ">{stat.value}</h3>
             </div>
           </div>
         ))}
       </div>
 
       {/* Full Width Chart */}
-      <div className="bg-white p-6 rounded-xl shadow-md">
-        <h3 className="text-xl font-semibold mb-4 text-gray-800">
+      <div className={` p-6 rounded-xl shadow-md ${isDark ? "bg-black": "bg-white"}`}>
+        <h3 className="text-xl font-semibold mb-4 ">
           All Groups Overview
         </h3>
         <ResponsiveContainer width="100%" height={300}>

@@ -4,8 +4,8 @@ export const AllGroupsDashboard = () => {
   const groupData = useLoaderData();
   console.log(groupData);
   return (
-    <section className="min-h-screen py-12 px-4 sm:px-8">
-      <div className="max-w-7xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden">
+    <section className="min-h-screen py-10 px-4 sm:px-10">
+      <div className=" mx-auto bg-white rounded-xl shadow-xl overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm text-gray-700 text-center">
             <thead className="bg-gray-800 font-bold text-white uppercase">

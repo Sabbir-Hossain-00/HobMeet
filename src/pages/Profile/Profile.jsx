@@ -6,7 +6,7 @@ import { Loader } from '../Loader/Loader';
 import { useLoaderData } from 'react-router';
 
 export const Profile = () => {
-  const { user } = use(AuthContext);
+  const { user , isDark } = use(AuthContext);
   const [groupData , setGroupData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const ongoingGroups = useLoaderData();
@@ -39,13 +39,13 @@ export const Profile = () => {
     }
    console.log(user)
   return (
-    <div className="relative min-h-[90vh]">
+    <div className="relative min-h-[100vh]">
       {/* Top 35% background - darker amber gradient */}
       <div className="md:h-[38vh] h-[60vh] bg-gradient-to-tr from-amber-600 to-yellow-500" />
 
       {/* Floating Card */}
       <div className="absolute p-3 top-[20vh] w-full flex justify-center">
-        <div className="relative bg-white rounded-3xl shadow-xl text-center px-6 py-10 max-w-xl w-full">
+        <div className={`relative rounded-3xl shadow-xl text-center px-6 py-10 max-w-xl w-full ${isDark ? "bg-black": "bg-white"}`}>
           {/* Top Buttons */}
           <div className="flex justify-between text-amber-600 text-sm font-medium mb-6">
             <div className="flex items-center gap-1">
@@ -71,17 +71,17 @@ export const Profile = () => {
           <div className="mt-16" />
 
           {/* Name and Location */}
-          <h2 className="text-2xl font-semibold text-gray-800">{user.displayName}</h2>
-          <p className="text-sm text-gray-500">{user?.email}</p>
+          <h2 className="text-2xl font-semibold">{user.displayName}</h2>
+          <p className={`text-sm  ${isDark ? "text-gray-300": "text-gray-500"}`}>{user?.email}</p>
 
           {/* Job Info */}
-          <div className="mt-2 text-gray-600 text-sm leading-relaxed">
+          <div className={`mt-2 text-sm leading-relaxed ${isDark ? "text-gray-300": "text-gray-500"}`}>
             <p>UID : {user?.uid}</p>
           </div>
 
 
           {/* Stats */}
-          <div className="mt-6 flex justify-center gap-10 text-gray-700">
+          <div className="mt-6 flex justify-center gap-10">
             <div>
               <p className="font-bold text-lg">{groupData?.length}</p>
               <p className="text-sm">My Groups</p>

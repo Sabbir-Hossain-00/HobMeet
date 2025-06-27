@@ -42,7 +42,7 @@ export const Sidebar = () => {
 
       {/* Sidebar */}
       <div
-        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-gray-100 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
+        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden ${isDark ?"bg-gray-800":"bg-gray-100"} w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
           isActive && "-translate-x-full"
         }  md:translate-x-0  transition duration-200 ease-in-out`}
       >
@@ -59,8 +59,8 @@ export const Sidebar = () => {
               <NavLink
                 to="profile"
                 className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-2  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? "bg-gray-300  text-gray-700" : "text-gray-600"
+                  `${isDark ? "text-gray-200":"text-gray-600"} flex items-center px-4 py-2 my-2  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
+                    isActive  ? "bg-gray-300  text-black" : ""
                   }`
                 }
               >
@@ -118,7 +118,7 @@ export const Sidebar = () => {
 
           <button
             onClick={logOut}
-            className="flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform"
+            className={`flex w-full items-center px-4 py-2 mt-5  hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform ${isDark? "text-gray-200":"text-gray-600"}`}
           >
             <GrLogout className="w-5 h-5" />
 
