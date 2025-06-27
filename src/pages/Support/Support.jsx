@@ -66,7 +66,7 @@ export const Support = () => {
               href="mailto:support@hobmeet.com"
               className="text-amber-600 font-medium underline"
             >
-              support@hobmeet.com
+              ms7398037@gmail.com
             </a>
           </div>
 
@@ -78,7 +78,7 @@ export const Support = () => {
             <p className={`mb-2 ${isDark ? "text-gray-300":"text-gray-600"}`}>
               Reach out between 10AM - 6PM (GMT+6)
             </p>
-            <p className="text-amber-600 font-medium">+880 1234 567 890</p>
+            <p className="text-amber-600 font-medium">+880 1614 842054</p>
           </div>
         </div>
 

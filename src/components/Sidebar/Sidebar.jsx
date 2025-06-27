@@ -77,7 +77,7 @@ export const Sidebar = () => {
               <MenuItem
                 icon={AiFillHome}
                 label="Home"
-                address="home"
+                address="/dashboard"
               />
               <MenuItem
                 icon={FaUserGroup}

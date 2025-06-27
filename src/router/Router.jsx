@@ -80,7 +80,7 @@ export const router = createBrowserRouter([
         element:<PrivateRoute><DashboardLayout/></PrivateRoute>,
         children:[
             {
-                path:"home",
+                index:true,
                 element:<DashboardHome/>,
                 loader:()=> fetch("https://hobmeet-server.vercel.app/ongoingGroups"),
             },

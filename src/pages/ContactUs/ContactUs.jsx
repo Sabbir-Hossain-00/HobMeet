@@ -43,7 +43,7 @@ export const ContactUs = () => {
               <input
                 {...register("email", { required: true })}
                 type="email"
-                placeholder="you@example.com"
+                placeholder="your email"
                 className={`w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400 ${isDark? "text-gray-100":"text-gray-600"}`}
               />
             </div>
@@ -79,11 +79,11 @@ export const ContactUs = () => {
               </div>
               <div className="flex items-center gap-4">
                 <FaPhoneAlt className="text-amber-400 text-xl" />
-                <p>+880 1234 567890</p>
+                <p>+880 1614 842054</p>
               </div>
               <div className="flex items-center gap-4">
                 <FaEnvelope className="text-amber-400 text-xl" />
-                <p>support@hobmeet.com</p>
+                <p>ms7398037@gmail.com</p>
               </div>
             </div>
           </div>

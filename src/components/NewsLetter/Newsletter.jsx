@@ -35,7 +35,7 @@ export const Newsletter = () => {
             />
             <button
               type="submit"
-              className={` transition  font-semibold px-6 py-3 rounded-tr-full rounded-br-full  shadow-lg ${
+              className={` transition text-black  font-semibold px-6 py-3 rounded-tr-full rounded-br-full  shadow-lg ${
                 isDark ? "bg-amber-400" : "bg-amber-400"
               }`}
             >
