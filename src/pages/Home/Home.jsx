@@ -3,6 +3,8 @@ import { Banner } from "../../components/Banner/Banner"
 import { Counter } from "../../components/Counter/Counter"
 import { FeaturedGroup } from "../../components/FeaturedGroup/FeaturedGroup"
 import { SuccessStories } from "../../components/SuccessStories/SuccessStories"
+import { Newsletter } from "../../components/NewsLetter/NewsLetter"
+import { HowItWorks } from "../../components/HowItWorks/HowItWorks"
 
 export const Home = ()=>{
     useEffect(() => {
@@ -17,6 +19,9 @@ export const Home = ()=>{
              <Banner/>
          </section>
          <section>
+           <HowItWorks/>
+         </section>
+         <section>
             <FeaturedGroup/>
          </section>
          <section>
@@ -24,6 +29,9 @@ export const Home = ()=>{
          </section>
          <section>
             <Counter/>
+         </section>
+         <section>
+            <Newsletter/>
          </section>
         </>
     )

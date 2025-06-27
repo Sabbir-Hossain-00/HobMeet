@@ -46,6 +46,11 @@ export const AuthProvider = ({children})=>{
         return signOut(auth)
     }
 
+    useEffect(()=>{
+        const theme = JSON.parse(localStorage.getItem("hobMeetTheme"));
+        setIsDark(theme)
+    },[])
+
 
 
 

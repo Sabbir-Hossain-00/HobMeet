@@ -8,8 +8,8 @@ export const FeaturedGroupCard = ({group})=>{
     return(
         <div>
         <Zoom>
-          <div className={`card h-[500px] xl:h-[520px]  shadow-sm ${isDark? "text-white bg-black" :"text-black bg-base-100" }`}>
-             <figure className="h-[200px] xl:h-[250px]">
+          <div className={`card h-[430px] xl:h-[450px]  shadow-sm ${isDark? "text-white bg-black" :"text-black bg-base-100" }`}>
+             <figure className="h-[180px] xl:h-[220px]">
                <img
                  src={group.photo}
                  alt="Shoes" 
@@ -21,7 +21,6 @@ export const FeaturedGroupCard = ({group})=>{
                <p><strong>Meeting Location :</strong> {group.location}</p>
                <p><strong>Members :</strong> {group.members}</p>
                <p><strong>Last Date :</strong> {group.date}</p>
-               <p><strong>Description :</strong> {group.description}</p>
                <div className="card-actions mt-3">
                  <Link to={`/group/${group._id}`} className="btn w-full border-none  bg-amber-300 hover:bg-amber-400  ">Details</Link>
                </div>

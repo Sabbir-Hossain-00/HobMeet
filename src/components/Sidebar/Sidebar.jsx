@@ -8,14 +8,19 @@ import { FaUsers } from 'react-icons/fa';
 import { HobmeetLogo } from "../HobmetLogo/HobmeetLogo";
 import { FaUserGroup } from "react-icons/fa6";
 import { AiFillHome } from "react-icons/ai";
+import { Moon, Sun } from "lucide-react";
 import { NavLink } from "react-router";
 export const Sidebar = () => {
   const [isActive, setActive] = useState(false);
-  const { user, logOut } = use(AuthContext);
+  const { user, logOut , isDark ,setIsDark } = use(AuthContext);
 
   // Sidebar Responsive Handler
   const handleToggle = () => {
     setActive(!isActive);
+  };
+  const toggleTheme = () => {
+    setIsDark(prev => !prev);
+    localStorage.setItem("hobMeetTheme",JSON.stringify(!isDark))
   };
   return (
     <>
@@ -95,6 +100,21 @@ export const Sidebar = () => {
 
         <div>
           <hr />
+
+          <div
+            onClick={toggleTheme}
+            className={`cursor-pointer mt-6 ml-3 w-12 h-7 sm:w-14 sm:h-8 flex items-center rounded-full p-1 transition duration-300 ${isDark ? "bg-gray-700" : "bg-amber-400"}`}
+          >
+            <div
+              className={`bg-white w-5 h-5 sm:w-6 sm:h-6 rounded-full shadow-md transform duration-300 ease-in-out ${isDark ? "translate-x-5 sm:translate-x-6" : "translate-x-0"}`}
+            >
+              {isDark ? (
+                <Moon className="w-3.5 h-3.5 sm:w-4 sm:h-4 m-auto md:mt-1 mt-0.5 text-black" />
+              ) : (
+                <Sun className="w-3.5 h-3.5 sm:w-4 sm:h-4 m-auto md:mt-1 mt-0.5 text-yellow-500" />
+              )}
+            </div>
+          </div>
 
           <button
             onClick={logOut}

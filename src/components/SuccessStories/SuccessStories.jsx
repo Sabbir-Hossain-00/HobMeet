@@ -4,10 +4,10 @@ import { AuthContext } from "../../context/AuthContext";
 export const SuccessStories = () => {
     const {isDark} = use(AuthContext);
   return (
-    <section className=" container mx-auto px-3 md:px-6 lg:px-8 xl:px-14 md:py-16 pb-10">
+    <section className=" container mx-auto px-3 md:px-6 lg:px-8 xl:px-14 md:pt-20">
       <div className={` md:py-20 py-10 md:px-10 p-2 ${isDark ? "bg-gradient-to-b from-black rounded-2xl to-gray-900]": "bg-gradient-to-b from-amber-50 to-slate-100"}`}>
         {/* Section Title */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <h2 className={`text-2xl md:text-4xl font-semibold  mb-2 ${isDark? "text-gray-100" : "text-gray-800"}`} >
             From Passion to <span className="text-amber-400">Connection</span>
           </h2>

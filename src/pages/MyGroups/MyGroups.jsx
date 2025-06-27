@@ -1,127 +1,117 @@
 import { use, useEffect, useState } from "react";
-import { useNavigate } from "react-router"
+import { useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import { MyGroupsEmpty } from "./MyGroupsEmpty";
 import { Loader } from "../Loader/Loader";
+import swal from "sweetalert";
 
-
-export const MyGroups = ()=>{
-  const {user , isDark} = use(AuthContext)
-  const [groupData , setGroupData] = useState([]);
-  const [isLoading , setIsLoading] = useState(true)
+export const MyGroups = () => {
+  const { user } = use(AuthContext);
+  const [groupData, setGroupData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
-  
-  const fetchData = async()=>{
+  const fetchData = async () => {
     const res = await fetch(`https://hobmeet-server.vercel.app/mygroups/${user.email}`);
     const data = await res.json();
-    setIsLoading(false)
-    setGroupData(data)
-  }
+    setIsLoading(false);
+    setGroupData(data);
+  };
 
-  useEffect(()=>{
-    fetchData()
-  },[])
-
- 
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const handleDeleteGroup = (id) => {
-  swal({
-    title: "Are you sure?",
-    text: "Do You want to Delete this Group ?",
-    icon: "warning",
-    buttons: true,
-    dangerMode: true,
-  }).then((willDelete) => {
-    if (willDelete) {
-      fetch(`https://hobmeet-server.vercel.app/group/${id}`, {
-        method: "DELETE",
-      })
-      .then(res => res.json())
-      .then((data) => {
-        if (data.deletedCount) {
-          swal("Deleted", "Your file has been deleted" ,{
-            icon: "success",
+    swal({
+      title: "Are you sure?",
+      text: "Do You want to Delete this Group?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        fetch(`https://hobmeet-server.vercel.app/group/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount) {
+              swal("Deleted", "Your group has been deleted", {
+                icon: "success",
+              });
+              const remainingGroup = groupData.filter((group) => group._id !== id);
+              setGroupData(remainingGroup);
+            } else {
+              swal("Failed to delete the group!", { icon: "error" });
+            }
+          })
+          .catch(() => {
+            swal("Something went wrong!", { icon: "error" });
           });
-          const remainingGroup = groupData.filter(group => group._id !== id);
-          setGroupData(remainingGroup);
-        } else {
-          swal("Failed to delete the file!", { icon: "error" });
-        }
-      })
-      .catch(() => {
-        swal("Something went wrong!", { icon: "error" });
-      });
-    } 
-  });
-};
+      }
+    });
+  };
 
-   useEffect(() => {
-    document.title = "My-Group - HobMeet";
+  useEffect(() => {
+    document.title = "My Groups - HobMeet";
     return () => {
-      document.title = "HobMeet"; // reset on unmount
+      document.title = "HobMeet";
     };
   }, []);
 
-    if(isLoading){
-      return <Loader/>
-    }
-   
-    if(groupData.length === 0){
-      return <MyGroupsEmpty/>
-   }
+  if (isLoading) return <Loader />;
+  if (groupData.length === 0) return <MyGroupsEmpty />;
 
-    return(
-        <section className="mt-10 min-h-screen py-20 container mx-auto px-3 md:px-6 lg:px-8 xl:px-14">
-          <h1 className="text-center text-2xl md:text-4xl mb-2 font-medium">Your Hobby <span className="text-amber-400">Hub</span></h1>
-          <p className="text-center mb-10 ">Manage all the hobby groups you've created in one place. Update details, remove groups, <br /> or explore your communities—right from your dashboard.</p>
-          <div className=" overflow-x-auto">
-            <table className="table w-full">
-              {/* head */}
-              <thead>
-                <tr className={`border border-gray-200 text-center ${isDark ? "text-white" :"text-gray-700"}`}>
-                  <th className="border border-gray-200">Name</th>
-                  <th className="border border-gray-200">Group Name</th>
-                  <th className="border border-gray-200">Max Member</th>
-                  <th className="border border-gray-200">Category</th>
-                  <th className="border border-gray-200">Update</th>
-                  <th className="border border-gray-200">Delete</th>
+  return (
+    <section className="min-h-screen py-12 px-4 sm:px-8">
+      <div className="max-w-7xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm  text-gray-700 text-center">
+            <thead className="bg-gray-800 font-bold text-white uppercase">
+              <tr>
+                <th className="py-3 px-2">#</th>
+                <th className="py-3 px-2">Name</th>
+                <th className="py-3 px-2">Group</th>
+                <th className="py-3 px-2">Members</th>
+                <th className="py-3 px-2">Category</th>
+                <th className="py-3 px-2">Update</th>
+                <th className="py-3 px-2">Delete</th>
+              </tr>
+            </thead>
+            <tbody >
+              {groupData.map((item, index) => (
+                <tr
+                  key={item._id}
+                  className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}
+                >
+                  <td className="py-3 px-2">{index + 1}</td>
+                  <td className="py-3 px-2">{item.userName}</td>
+                  <td className="py-3 px-2">{item.groupName}</td>
+                  <td className="py-3 px-2">{item.members}</td>
+                  <td className="py-3 px-2">{item.hobbyCategory}</td>
+                  <td className="py-3 px-2">
+                    <button
+                      onClick={() => navigate(`/updategroup/${item._id}`)}
+                      className="bg-amber-400 hover:bg-amber-500 text-white font-medium py-1 px-3 rounded"
+                    >
+                      Update
+                    </button>
+                  </td>
+                  <td className="py-3 px-2">
+                    <button
+                      onClick={() => handleDeleteGroup(item._id)}
+                      className="bg-rose-500 hover:bg-rose-600 text-white font-medium py-1 px-3 rounded"
+                    >
+                      Delete
+                    </button>
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                {
-                  groupData?.map((signleData)=>{
-                    return <tr className="border border-gray-200 text-center" key={signleData._id}>
-                              <td className="border border-gray-200">
-                                <div className="flex items-center  gap-3">
-                                  <div className="avatar">
-                                    <div className="mask mask-squircle h-12 w-12">
-                                      <img
-                                        src={signleData.photo}
-                                        alt="Avatar Tailwind CSS Component" />
-                                    </div>
-                                  </div>
-                                  <div className="flex flex-col min-w-fit pr-2 items-start">
-                                    <div className="font-bold">{signleData.userName}</div>
-                                    <div className="text-sm opacity-50">{signleData.location}</div>
-                                  </div>
-                                </div>
-                              </td>
-                              <td className="border border-gray-200">{signleData.groupName}</td>
-                              <td className="border border-gray-200">{signleData.members}</td>
-                              <td className="border border-gray-200">{signleData.hobbyCategory}</td>
-                              <td className="border border-gray-200">
-                                <button onClick={()=>navigate(`/updategroup/${signleData._id}`)} className="btn border-none  bg-amber-300 hover:bg-amber-400  ">Update</button>
-                              </td>
-                              <td className="border border-gray-200">
-                                <button onClick={()=>handleDeleteGroup(signleData._id)} className="btn border-none bg-rose-500 hover:bg-rose-600 text-white">Delete</button>
-                              </td>
-                            </tr>
-                  })
-                }
-              </tbody>
-            </table>
-          </div>
-        </section>
-    )
-}
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  );
+};

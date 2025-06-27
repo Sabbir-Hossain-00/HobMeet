@@ -11,6 +11,7 @@ export const Navbar = () => {
 
   const toggleTheme = () => {
     setIsDark(prev => !prev);
+    localStorage.setItem("hobMeetTheme",JSON.stringify(!isDark))
   };
 
   const handleLogout = () => {
@@ -20,8 +21,10 @@ export const Navbar = () => {
   const links = (
     <>
       <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/" className={({ isActive }) => isActive ? "text-amber-400 font-medium" : "font-medium"}>Home</NavLink></li>
-      <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/about" className={({ isActive }) => isActive ? "text-amber-400 font-medium" : "font-medium"}>About Us</NavLink></li>
+      <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/allGroups" className={({ isActive }) => isActive ? "text-amber-400 font-medium" : "font-medium"}>All Groups</NavLink></li>
+      <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/about" className={({ isActive }) => isActive ? "text-amber-400 font-medium" : "font-medium"}>About</NavLink></li>
       <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/contact" className={({ isActive }) => isActive ? "text-amber-400 font-medium" : "font-medium"}>Contact</NavLink></li>
+      <li className={`${isDark ? "text-white" : ""}`}><NavLink to="/support" className={({ isActive }) => isActive ? "text-amber-400 font-medium" : "font-medium"}>Support</NavLink></li>
       {user && <Link onClick={handleLogout} className="btn md:hidden btn-xs w-fit ml-2 mt-1 border-none  bg-amber-300 hover:bg-amber-400  ">Logout</Link>}
       {
         user &&  <Link to="/dashboard" className="btn btn-sm md:hidden w-fit mt-3 ml-2 md:btn-md border-none  bg-amber-300 hover:bg-amber-400  ">Dashboard</Link>

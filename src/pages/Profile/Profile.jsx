@@ -1,11 +1,43 @@
-import React, { use } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { FaUserFriends, FaCommentDots } from 'react-icons/fa';
 import { MdPhotoLibrary } from 'react-icons/md';
 import { AuthContext } from '../../context/AuthContext';
+import { Loader } from '../Loader/Loader';
+import { useLoaderData } from 'react-router';
 
-const Profile = () => {
+export const Profile = () => {
   const { user } = use(AuthContext);
+  const [groupData , setGroupData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const ongoingGroups = useLoaderData();
+  const [allGroups , setAllGroups] = useState(null)
+  
 
+
+
+   const fetchData = async () => {
+      const res = await fetch(`https://hobmeet-server.vercel.app/mygroups/${user.email}`);
+      const data = await res.json();
+      setIsLoading(false);
+      setGroupData(data);
+    };
+  
+    const fetchingData = async ()=>{
+      const res = await fetch(`https://hobmeet-server.vercel.app/groups`);
+      const data = await res.json();
+      setIsLoading(false);
+      setAllGroups(data);
+    }
+  
+    useEffect(() => {
+      fetchData();
+      fetchingData();
+    }, []);
+
+    if(isLoading){
+        return <Loader/>
+    }
+   console.log(user)
   return (
     <div className="relative min-h-[90vh]">
       {/* Top 35% background - darker amber gradient */}
@@ -40,33 +72,33 @@ const Profile = () => {
 
           {/* Name and Location */}
           <h2 className="text-2xl font-semibold text-gray-800">{user.displayName}</h2>
-          <p className="text-sm text-gray-500">New York, United States</p>
+          <p className="text-sm text-gray-500">{user?.email}</p>
 
           {/* Job Info */}
           <div className="mt-2 text-gray-600 text-sm leading-relaxed">
-            <p>Web Producer - Web Specialist</p>
-            <p>Columbia University - New York</p>
+            <p>UID : {user?.uid}</p>
           </div>
+
 
           {/* Stats */}
           <div className="mt-6 flex justify-center gap-10 text-gray-700">
             <div>
-              <p className="font-bold text-lg">65</p>
-              <p className="text-sm">Friends</p>
+              <p className="font-bold text-lg">{groupData?.length}</p>
+              <p className="text-sm">My Groups</p>
             </div>
             <div>
-              <p className="font-bold text-lg">43</p>
-              <p className="text-sm">Photos</p>
+              <p className="font-bold text-lg">{allGroups?.length}</p>
+              <p className="text-sm">Total Groups</p>
             </div>
             <div>
-              <p className="font-bold text-lg">21</p>
-              <p className="text-sm">Comments</p>
+              <p className="font-bold text-lg">{ongoingGroups?.length}</p>
+              <p className="text-sm">Active Groups</p>
             </div>
           </div>
 
           {/* Button */}
-          <button className="mt-6  btn btn-sm md:btn-md  border-none  bg-amber-300 hover:bg-amber-400">
-            Show more
+          <button  className="mt-6  btn btn-sm md:btn-md  border-none  bg-amber-400">
+            Update
           </button>
         </div>
       </div>
@@ -74,4 +106,3 @@ const Profile = () => {
   );
 };
 
-export default Profile;

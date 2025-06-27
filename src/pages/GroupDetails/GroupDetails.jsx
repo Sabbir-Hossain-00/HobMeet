@@ -32,7 +32,7 @@ export const GroupDetails = () => {
   return (
     <section className="mt-20 min-h-screen  py-10 container mx-auto px-3 md:px-6 lg:px-8 xl:px-14">
 
-      <button onClick={()=>navigate("/")} className="btn btn-sm bg-amber-400 border-none hover:bg-amber-500">Go Back To Home</button>
+      <button onClick={()=>navigate("/")} className="btn btn-sm bg-amber-300 border-none hover:bg-amber-400">Go Back To Home</button>
 
       <div className={`mt-20 md:py-20 md:p-10 p-4 flex flex-col md:flex-row gap-6 items-start justify-start  rounded-xl shadow-md ${isDark ? "bg-gradient-to-b from-gray-800 to-gray-900 border border-gray-700":"bg-gradient-to-b from-amber-50 to-slate-50 border border-slate-100"}`}>
         {/* Image */}
@@ -57,7 +57,7 @@ export const GroupDetails = () => {
             {
               isLonger ? <button
               onClick={handleJoinGroup}
-              className="bg-amber-400 border-none hover:bg-amber-500 text-white font-medium px-4 py-2 rounded btn"
+              className="bg-amber-300 border-none hover:bg-amber-400 text-white font-medium px-4 py-2 rounded btn"
             >
               Join Now
             </button> : <p className="bg-red-100  px-4 py-2 rounded-4xl md:w-fit flex gap-2 items-center text-red-700"><CircleAlert size={16} /> The group is no longer active</p>

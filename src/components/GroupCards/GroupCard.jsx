@@ -30,9 +30,6 @@ export const GroupCard = ({singleGroupData})=>{
                      <p className={`mt-1 text-start text-sm ${isDark? "text-white":"text-black"}`}>
                         <strong className={isDark? "text-white":"text-black"}>Max Members :</strong> {singleGroupData.members}
                      </p>
-                     <p className={`mt-1 text-start text-sm ${isDark? "text-white":"text-black"}`}>
-                      <strong className={isDark? "text-white":"text-black"}>Description :</strong> {singleGroupData.description}
-                     </p>
                    </div>
                  </div>
          

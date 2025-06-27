@@ -28,7 +28,7 @@ export const UpdateGroup = () => {
             icon: "success",
             button: "Ok",
           });
-          navigate("/myGroups")
+          navigate("/dashboard/myGroups")
         }
       });
   };
@@ -163,7 +163,7 @@ export const UpdateGroup = () => {
 
           {/* Date */}
           <label className={`block mb-2 font-medium ${isDark ? "text-white" : "text-gray-700"}`}>
-            Start Date:<span className="text-red-500">*</span>
+            End Date:<span className="text-red-500">*</span>
           </label>
           <input
             type="date"
